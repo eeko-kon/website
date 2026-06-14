@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Άρης Βουρβούλιας – Συγγραφέας &amp; Πολιτικός Αναλυτής</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:         #0f1f3d;
+      --navy-mid:     #1a3461;
+      --accent:       #c8a96e;
+      --accent-light: #f0e4c8;
+      --bg:           #f6f5f1;
+      --surface:      #ffffff;
+      --text:         #1c1c2e;
+      --muted:        #6b7280;
+      --border:       #e5e7eb;
+      --radius:       12px;
+      --shadow:       0 4px 24px rgba(15,31,61,0.08);
+      --shadow-hover: 0 8px 40px rgba(15,31,61,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* HERO SPLIT */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    .photo-mosaic {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .photo-mosaic img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 0;
+      transition: opacity 0.55s ease;
+      display: block;
+    }
+    .photo-mosaic img.active {
+      opacity: 1;
+    }
+    .mosaic-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    .mosaic-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .mosaic-dots span.active {
+      background: #fff;
+    }
+    .mosaic-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: rgba(255,255,255,0.18);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .mosaic-arrow:hover {
+      background: rgba(255,255,255,0.38);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .mosaic-arrow svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .mosaic-arrow.prev { left: 14px; }
+    .mosaic-arrow.next { right: 14px; }
+    .hero-text {
+      background: var(--navy);
+      color: #fff;
+      padding: 64px 52px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .hero-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.5);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+    }
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #fff;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #aec6e8;
+      font-style: italic;
+    }
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+      font-size: 0.85rem;
+      color: #ccd9ee;
+    }
+    .hero-contact a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
+    .hero-contact a:hover { opacity: .75; }
+    .hero-bio {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .hero-bio p {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: #ccd9ee;
+    }
+    .hero-bio em { color: var(--accent); font-style: italic; }
+
+    /* NAV */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color .2s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; right: 50%;
+      height: 2px;
+      background: var(--accent);
+      transition: left .25s, right .25s;
+    }
+    nav a:hover { color: var(--navy); }
+    nav a:hover::after { left: 16px; right: 16px; }
+
+    /* LAYOUT */
+    .container { max-width: 900px; margin: 0 auto; padding: 72px 24px; }
+    section { margin-bottom: 88px; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    section h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 32px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--accent-light);
+    }
+
+    /* BIO */
+    .bio-grid { display: flex; flex-direction: column; gap: 16px; }
+    .bio-grid p { font-size: 1.05rem; color: #374151; line-height: 1.85; }
+
+    /* BOOK */
+    .book-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px 40px;
+      border-left: 4px solid var(--accent);
+    }
+    .book-card p { color: #374151; line-height: 1.8; margin-bottom: 20px; }
+    .book-links { list-style: none; margin-bottom: 28px; }
+    .book-links li { margin-bottom: 8px; }
+    .book-links li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy-mid);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .95rem;
+      transition: color .2s;
+    }
+    .book-links li a::before { content: '→'; color: var(--accent); }
+    .book-links li a:hover { color: var(--accent); }
+
+    .video-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+      gap: 20px;
+    }
+    .video-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .video-label {
+      background: var(--navy);
+      color: #d0ddf5;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 10px 14px;
+    }
+    .video-thumb {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-thumb a, .video-thumb button {
+      position: absolute; inset: 0;
+      display: block;
+      width: 100%; height: 100%;
+      border: none; padding: 0; background: none; cursor: pointer;
+    }
+    .video-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .video-card:hover .video-thumb img { transform: scale(1.04); }
+    .video-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; height: 60px;
+      background: rgba(255,0,0,0.88);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+    .video-thumb button:hover .video-play-btn, .video-thumb a:hover .video-play-btn {
+      background: #ff0000;
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+    .video-play-btn svg { width: 24px; height: 24px; fill: #fff; margin-left: 4px; }
+    .video-thumb iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    /* ARTICLES */
+    .outlets-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .outlets-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .outlets-grid { grid-template-columns: 1fr; }
+    }
+    .outlet-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 28px;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .outlet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .outlet-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--accent-light);
+    }
+    .outlet-card ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .outlet-card ol li a {
+      color: var(--navy-mid);
+      text-decoration: none;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      transition: color .2s;
+    }
+    .outlet-card ol li a:hover { color: var(--accent); }
+
+    /* PODCAST */
+    .podcast-intro { color: #374151; margin-bottom: 24px; font-size: 1rem; line-height: 1.8; }
+    .podcast-episodes {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .podcast-episode-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .podcast-episode-label {
+      background: var(--navy);
+      color: #d0ddf5;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .podcast-episode-card iframe {
+      display: block;
+      border: none;
+    }
+    .podcast-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .podcast-pill {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 500;
+      font-size: .92rem;
+      transition: transform .2s, box-shadow .2s, color .2s;
+    }
+    .podcast-pill:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); color: var(--accent); }
+    .podcast-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .kath-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--navy);
+      font-size: .88rem;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .kath-link:hover { background: var(--accent); color: #fff; }
+
+    /* CONTACT */
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .social-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px 22px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 500;
+      font-size: .95rem;
+      transition: transform .2s, box-shadow .2s, color .2s;
+    }
+    .social-pill:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); color: var(--accent); }
+    .social-pill svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* CV TIMELINE */
+    .cv-heading {
+      font-family: 'Inter', sans-serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 24px;
+      margin-top: 44px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .cv-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .timeline { display: flex; flex-direction: column; }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0 24px;
+      position: relative;
+      padding-bottom: 28px;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: 168px; top: 8px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-light), transparent);
+    }
+    .tl-item:last-child::before { display: none; }
+    .tl-period {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+      text-align: right;
+      padding-top: 5px;
+      padding-right: 24px;
+    }
+    .tl-dot {
+      position: absolute;
+      left: 160px; top: 6px;
+      width: 16px; height: 16px;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .tl-body {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      margin-left: 16px;
+    }
+    .tl-body h3 { font-size: .97rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .tl-body .org { font-size: .83rem; color: var(--muted); font-style: italic; margin-bottom: 0; }
+    .tl-body ul { padding-left: 18px; font-size: .88rem; color: #4b5563; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px; }
+
+    /* EDUCATION */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 16px;
+    }
+    .edu-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 26px;
+      border-top: 3px solid var(--accent);
+    }
+    .edu-card .year { font-size: .75rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+    .edu-card .degree { font-weight: 600; color: var(--navy); font-size: .95rem; margin-bottom: 4px; }
+    .edu-card .school { font-size: .86rem; color: var(--muted); font-style: italic; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: #7a96c0;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .87rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-split { grid-template-columns: 1fr; min-height: auto; }
+      .photo-mosaic { height: 70vw; position: relative; }
+      .hero-text { padding: 48px 24px; }
+    }
+    @media (max-width: 640px) {
+      .photo-mosaic { height: 80vw; }
+      .hero-text { padding: 32px 18px; }
+      .tl-item { grid-template-columns: 1fr; }
+      .tl-item::before, .tl-dot { display: none; }
+      .tl-period { text-align: left; font-size: .75rem; }
+      .tl-body { margin-left: 0; }
+      .book-card { padding: 24px 18px; }
+      .container { padding: 48px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section id="bio" class="hero-split">
+    <div class="photo-mosaic" id="photoMosaic">
+      <img src="photos/Προσωπική%20με%20βιβλίο%203.jpg" alt="Άρης Βουρβούλιας" loading="eager" class="active">
+      <img src="photos/Προσωπική%20με%20βιβλίο%20και%20άλλους.jpg" alt="" loading="eager">
+      <img src="photos/Προσωπική%205.jpg" alt="" loading="eager">
+      <img src="photos/Προσωπική%201.jpg" alt="" loading="lazy">
+      <img src="photos/βιβλίο.jpg" alt="" loading="lazy">
+      <img src="photos/DSC_0969.jpeg" alt="" loading="lazy">
+      <button class="mosaic-arrow prev" id="mosaicPrev" aria-label="Προηγούμενη">
+        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <button class="mosaic-arrow next" id="mosaicNext" aria-label="Επόμενη">
+        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+      <div class="mosaic-dots" id="mosaicDots"></div>
+    </div>
+    <div class="hero-text">
+      <span class="hero-tag">Συγγραφέας &amp; Πολιτικός Αναλυτής</span>
+      <h1>Άρης Βουρβούλιας</h1>
+      <p class="hero-subtitle">Author &amp; Political Analyst · Athens, Greece</p>
+      <div class="hero-contact">
+        <span>📍 Αθήνα</span>
+        <a href="mailto:arisvourvoulias@gmail.com">arisvourvoulias@gmail.com</a>
+        <span>6976 226 800</span>
+      </div>
+      <div class="hero-bio">
+        <p>
+          Είμαι συγγραφέας και πολιτικός αναλυτής με υπόβαθρο στη δημοσιογραφία, τα μέσα ενημέρωσης και την
+          πολιτική επιστήμη. Πρόσφατα συνυπέγραψα με τον Σταύρο Θεοδωράκη το ερευνητικό bestseller
+          <em>«14 Σκιές και Αλήθειες της Ελλάδας»</em>. Κατά καιρούς έχω αρθρογραφήσει σε κορυφαία ελληνικά
+          ΜΜΕ, ενώ έχω δημιουργήσει και τη δική μου σειρά podcast.
+        </p>
+        <p>
+          Για δέκα χρόνια έζησα στην Κοπεγχάγη, έχοντας προηγουμένως ζήσει και εργαστεί στην Ισπανία και την 
+          Ελλάδα. Στη διάρκεια της επαγγελματικής μου πορείας συνέβαλα καθοριστικά στην ανάπτυξη του AWM Network, 
+          σημερινού Lead.io, μιας εταιρείας που εξαγοράστηκε επιτυχώς το 2021. Στη συνέχεια υπηρέτησα ως COO της 
+          Lånio ApS. Σήμερα έχω επιστρέψει στην Αθήνα, συνεχίζοντας να κινούμαι στο πεδίο όπου τέμνονται η 
+          πολιτική ανάλυση, η επιχειρηματικότητα, τα μέσα και η δημόσια συζήτηση.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#bio">Προφίλ</a>
+      <a href="#book">Βιβλίο</a>
+      <a href="#articles">Αρθρογραφία</a>
+      <a href="#interviews">Συνεντεύξεις</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#cv">Βιογραφικό</a>
+      <a href="#contact">Επικοινωνία</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+
+
+    <!-- BOOK -->
+    <section id="book">
+      <p class="section-label">Συγγραφή</p>
+      <h2>Βιβλίο</h2>
+      <div class="book-card">
+        <p>
+          Τον Δεκέμβριο του 2025 κυκλοφόρησε από τις Εκδόσεις <strong>Μεταίχμιο</strong> το ερευνητικό βιβλίο
+          <em>14 Σκιές και Αλήθειες της Ελλάδας</em>, το οποίο συνυπογράφω με τον Σταύρο Θεοδωράκη.
+          Το βιβλίο γνώρισε σημαντική εμπορική επιτυχία ήδη από τις πρώτες εβδομάδες κυκλοφορίας του.
+        </p>
+        <ul class="book-links">
+          <li>
+            <a href="https://www.metaixmio.gr/el/products/14-skies-kai-alhtheies-ths-elladas?" target="_blank" rel="noopener">
+              Αγοράστε το βιβλίο – Εκδόσεις Μεταίχμιο
+            </a>
+          </li>
+        </ul>
+        <p class="video-section-title">Βίντεο</p>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-label">🎤 Εισαγωγική ομιλία από την παρουσίαση</div>
+            <div class="video-thumb">
+              <button data-vid="mFdctiQrZbo" data-start="5" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/mFdctiQrZbo/hqdefault.jpg" alt="Παρουσίαση βιβλίου – εισαγωγική ομιλία" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+          <div class="video-card">
+            <div class="video-label">📺 Συνέντευξη στο One Channel – Αντιβιοτικά</div>
+            <div class="video-thumb">
+              <button data-vid="beoSFAndT4Y" data-start="10" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/beoSFAndT4Y/hqdefault.jpg" alt="Συνέντευξη One Channel" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles">
+      <p class="section-label">Δημοσιογραφία</p>
+      <h2>Αρθρογραφία</h2>
+      <p style="color:#4b5563;margin-bottom:28px;line-height:1.8;">
+        Κατά καιρούς έχω αρθρογραφήσει ως εξωτερικός συνεργάτης σε διάφορα μέσα ενημέρωσης, μεταξύ των οποίων η
+        <strong>Καθημερινή</strong>, το <strong>Έθνος</strong>, η <strong>HuffPost Greece</strong>,
+        το <strong>iEfimerida</strong> και η <strong>Εφημερίδα των Συντακτών</strong>.
+      </p>
+      <div class="outlets-grid">
+        <div class="outlet-card">
+          <h3>Καθημερινή</h3>
+          <ol>
+            <li>
+              <a href="https://www.kathimerini.gr/society/561295252/i-teleia-kataigida-toy-1821-oi-paragontes-epitychias-mias-paliggenesias/" target="_blank" rel="noopener">
+                Η τέλεια καταιγίδα του 1821 – παράγοντες επιτυχίας μιας παλιγγενεσίας
+              </a>
+            </li>
+            <li>
+              <a href="https://www.kathimerini.gr/politics/1087328/analysi-o-eyropaikos-gordios-desmos-toy-livykoy-emfylioy/" target="_blank" rel="noopener">
+                Ο Ευρωπαϊκός Γόρδιος Δεσμός του Λιβυκού Εμφυλίου
+              </a>
+            </li>
+          </ol>
+        </div>
+        <div class="outlet-card">
+          <h3>iEfimerida</h3>
+          <ol>
+            <li>
+              <a href="https://www.iefimerida.gr/kosmos/benezoyela-ellada-i-biaii-enilikiosi-neas-epohis" target="_blank" rel="noopener">
+                Η Βενεζουέλα, η Ελλάδα και η «βίαιη ενηλικίωση» της νέας εποχής
+              </a>
+            </li>
+          </ol>
+        </div>
+        <div class="outlet-card">
+          <h3>Έθνος</h3>
+          <ol>
+            <li>
+              <a href="https://www.ethnos.gr/opinions/article/166337/ispanikosemfylios19361939topreloydiothseyropaikhskatastrofhs" target="_blank" rel="noopener">
+                Ισπανικός Εμφύλιος 1936–1939: Το πρελούδιο της ευρωπαϊκής καταστροφής
+              </a>
+            </li>
+            <li>
+              <a href="https://www.ethnos.gr/opinions/article/173967/rekordekaetiasoplhthorismosthseyropaikhsenoshsyparxeilogosgiapaniko" target="_blank" rel="noopener">
+                Ρεκόρ δεκαετίας ο πληθωρισμός της Ευρωπαϊκής Ένωσης: Υπάρχει λόγος για πανικό;
+              </a>
+            </li>
+            <li>
+              <a href="https://www.ethnos.gr/opinions/article/182173/toeyropaikodilhmmathsamyntikhsoloklhroshstodogmamakronoeyrostratoskaioiaytapatestonbryxellon" target="_blank" rel="noopener">
+                Το Ευρωπαϊκό Δίλημμα της Αμυντικής Ολοκλήρωσης: Το «δόγμα Μακρόν», ο ευρωστρατός, και οι «αυταπάτες» των Βρυξελλών
+              </a>
+            </li>
+          </ol>
+        </div>
+        <div class="outlet-card">
+          <h3>HuffPost Greece</h3>
+          <ol>
+            <li>
+              <a href="https://www.huffingtonpost.gr/diethnes/i-tris-ioni-mias-proanangelthisas-sinoamerikanikis-sigkrousis/" target="_blank" rel="noopener">
+                Οι τρεις οιωνοί μιας προαναγγελθείσας Σινοαμερικανικής σύγκρουσης
+              </a>
+            </li>
+            <li>
+              <a href="https://www.huffingtonpost.gr/diethnes/finlandopiite-i-ellada-o-anakrivis-parallilismos-me-tis-ellinotourkikes-schesis/" target="_blank" rel="noopener">
+                «Φινλανδοποιείται» η Ελλάδα; Ο ανακριβής παραλληλισμός με τις Ελληνοτουρκικές σχέσεις
+              </a>
+            </li>
+            <li>
+              <a href="https://www.huffingtonpost.gr/diethnes/dikeoute-to-twitter-na-apoklii-ton-proedro-tis-amerikis-ta-tria-aftonoma-epipeda-analisis/" target="_blank" rel="noopener">
+                Δικαιούται το Twitter να αποκλείει τον πρόεδρο της Αμερικής; Τα τρία αυτόνομα επίπεδα ανάλυσης
+              </a>
+            </li>
+            <li>
+              <a href="https://www.huffingtonpost.gr/diethnes/ekato-meres-bainten-i-proti-axiologisi-ta-lathi-ke-ta-megala-stichimata/" target="_blank" rel="noopener">
+                Εκατό μέρες Μπάιντεν: Η πρώτη αξιολόγηση, τα λάθη και τα μεγάλα στοιχήματα
+              </a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERVIEWS -->
+    <section id="interviews">
+      <p class="section-label">Μέσα Ενημέρωσης</p>
+      <h2>Συνεντεύξεις</h2>
+
+      <!-- Εθνικός Κήρυκας -->
+      <div style="margin-bottom:32px;">
+        <p class="section-label" style="margin-bottom:12px;">Εθνικός Κήρυκας</p>
+        <a href="https://www.ekirikas.com/aris-vourvoulias-oi-skies-pou-megalos/" target="_blank" rel="noopener" style="color:var(--navy-mid);text-decoration:none;font-size:.88rem;transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--navy-mid)'">
+          Άρης Βουρβούλιας: Οι σκιές που μεγάλωσαν μαζί μας
+        </a>
+      </div>
+
+      <!-- «Εδώ» -->
+      <div style="margin-bottom:40px;">
+        <p class="section-label" style="margin-bottom:12px;">«Εδώ» – One Channel</p>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-label">📺 14 Σκιές και Αλήθειες – Παρουσίαση βιβλίου (4.12.2025)</div>
+            <div class="video-thumb">
+              <button data-vid="AU8d8BtOoMk" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/AU8d8BtOoMk/hqdefault.jpg" alt="14 Σκιές και Αλήθειες – Παρουσίαση βιβλίου, «Εδώ»" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+          <div class="video-card">
+            <div class="video-label">📺 Αντιβιοτικά (11.12.2025)</div>
+            <div class="video-thumb">
+              <button data-vid="beoSFAndT4Y" data-start="14" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/beoSFAndT4Y/hqdefault.jpg" alt="Αντιβιοτικά – «Εδώ»" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+          <div class="video-card">
+            <div class="video-label">📺 Διαχείριση Αποβλήτων (18.12.2025)</div>
+            <div class="video-thumb">
+              <button data-vid="v2k9yselOq4" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/v2k9yselOq4/hqdefault.jpg" alt="Διαχείριση Αποβλήτων – «Εδώ»" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+          <div class="video-card">
+            <div class="video-label">📺 Καισαρικές (15.1.2026)</div>
+            <div class="video-thumb">
+              <button data-vid="Ld0QRWBdQmU" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/Ld0QRWBdQmU/hqdefault.jpg" alt="Καισαρικές – «Εδώ»" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Βόλος 98,6 FM -->
+      <div>
+        <p class="section-label" style="margin-bottom:12px;">Βόλος 98,6 FM</p>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-label">📻 Καισαρικές (19.12.2025)</div>
+            <div class="video-thumb">
+              <button data-vid="e86OQvOCI7k" data-start="2" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/e86OQvOCI7k/hqdefault.jpg" alt="Καισαρικές – Βόλος 98,6 FM" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+          <div class="video-card">
+            <div class="video-label">📻 Εκπαιδευτικό Σύστημα (11.3.2026)</div>
+            <div class="video-thumb">
+              <button data-vid="yFd4m3CXnss" aria-label="Αναπαραγωγή βίντεο">
+                <img src="https://img.youtube.com/vi/yFd4m3CXnss/hqdefault.jpg" alt="Εκπαιδευτικό Σύστημα – Βόλος 98,6 FM" loading="lazy">
+                <span class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PODCAST -->
+    <section id="podcast">
+      <p class="section-label">Audio</p>
+      <h2>Podcast</h2>
+      <p class="podcast-intro">
+        Δημιούργησα τη σειρά podcast <em><strong>Do it Like</strong></em> — μια ερευνητική, αφηγηματική σειρά 9 επεισοδίων που
+        εξερευνά τις ιστορίες επιτυχίας διαφόρων χωρών μέσα από διαφορετικές πτυχές της πολιτικής και κοινωνικής ζωής.
+      </p>
+      <div class="podcast-episodes">
+        <div class="podcast-episode-card">
+          <div class="podcast-episode-label">🎙 Do it Like – Ολλανδία &nbsp;·&nbsp; Ατομικά Δικαιώματα &amp; Ελευθερίες</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/7tVegwdsUvDDtuTfFOf9d0?utm_source=generator"
+            width="100%" height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="podcast-episode-card">
+          <div class="podcast-episode-label">🎙 Do it Like – Ιαπωνία &nbsp;·&nbsp; Τεχνολογία</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/4Z25GGBYZbPXD8QUC5aPnP?utm_source=generator"
+            width="100%" height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+      <p style="color:#4b5563;margin-bottom:14px;font-size:.95rem;">
+        Είχαμε επίσης συνεργασία με την <strong>Καθημερινή</strong>, όπου δημοσίευα αποκλειστικό άρθρο για κάθε επεισόδιο:
+      </p>
+      <ol style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562665625/do-it-like-singapore/" target="_blank" rel="noopener">🇸🇬 Do it Like Singapore</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562703923/podcast-do-it-like-estonia-psifiaki-diakyvernisi/" target="_blank" rel="noopener">🇪🇪 Do it Like Estonia: Ψηφιακή Διακυβέρνηση</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562742725/do-it-like-finland-paideia/" target="_blank" rel="noopener">🇫🇮 Do it Like Finland: Παιδεία</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562780213/do-it-like-new-zealand-epicheirimatiko-perivallon/" target="_blank" rel="noopener">🇳🇿 Do it Like New Zealand: Επιχειρηματικό Περιβάλλον</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562822012/do-it-like-japan-technologia/" target="_blank" rel="noopener">🇯🇵 Do it Like Japan: Τεχνολογία</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562858777/do-it-like-denmark-kratos-pronoias/" target="_blank" rel="noopener">🇩🇰 Do it Like Denmark: Κράτος Πρόνοιας</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562894786/do-it-like-the-netherlands-atomika-dikaiomata-amp-eleytheries/" target="_blank" rel="noopener">🇳🇱 Do it Like the Netherlands: Ατομικά Δικαιώματα &amp; Ελευθερίες</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562939207/do-it-like-great-britain-antiprosopeytiki-dimokratia-a-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Α΄ Μέρος</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562962547/do-it-like-great-britain-antiprosopeytiki-dimokratia-v-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Β΄ Μέρος</a></li>
+      </ol>
+      <p style="color:#4b5563;margin-top:24px;margin-bottom:14px;font-size:.95rem;">
+        Δείτε το πλήρες προφίλ του podcast στο <strong>Pod.gr</strong>:
+      </p>
+      <a class="kath-link" href="https://pod.gr/aris-vourvoulias/" target="_blank" rel="noopener">
+        → Άρης Βουρβούλιας στο Pod.gr
+      </a>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" style="margin-bottom:40px;">
+      <p class="section-label">Βιογραφικό</p>
+      <h2>Επαγγελματική Πορεία</h2>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-period">Αυγ 2024 – Δεκ 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Συγγραφέας</h3>
+            <p class="org">Π² – Ινστιτούτο Πρόοδος Στην Πράξη, Αθήνα</p>
+            <ul>
+              <li>Συνυπογραφή bestseller <em>«14 Σκιές και Αλήθειες της Ελλάδας»</em> με τον Σταύρο Θεοδωράκη (Εκδόσεις Μεταίχμιο).</li>
+              <li>Ερευνητικό βιβλίο που διερευνά 14 κρίσιμα ζητήματα που αντιμετωπίζει η χώρα.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Οκτ 2021 – Μαρ 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Chief Operating Officer</h3>
+            <p class="org">Lånio.dk ApS, Κοπεγχάγη</p>
+            <ul>
+              <li>Ανάπτυξη επιχειρηματικής στρατηγικής σε συνεργασία με την ανώτατη διοίκηση.</li>
+              <li>Επίβλεψη καθημερινών λειτουργιών και brand development με SEO best practices.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Οκτ 2023 – Μαϊ 2024</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Podcast Host</h3>
+            <p class="org">Pod.gr, Κοπεγχάγη (Εξ αποστάσεως)</p>
+            <ul>
+              <li>Δημιουργία &amp; παραγωγή της σειράς <em>«Do it Like»</em> για το Pod.gr.</li>
+              <li>Ερευνητική σειρά για ιστορίες επιτυχίας χωρών μέσα από πολιτικές/κοινωνικές πτυχές.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Ιουν 2020 – Σήμερα</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Πολιτικός Αναλυτής &amp; Αρθρογράφος</h3>
+            <p class="org">Ελεύθερος Επαγγελματίας</p>
+            <ul>
+              <li>Συνεργασία με kathimerini.gr, iefimerida.gr, ethnos.gr, huffpost.gr κ.ά.</li>
+              <li>Αρθρογραφία για πολιτική, γεωπολιτική και ιστορία.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Ιαν 2018 – Οκτ 2021</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Head of Organic Performance</h3>
+            <p class="org">AWM Network ApS, Κοπεγχάγη</p>
+            <ul>
+              <li>Στρατηγική περιεχομένου &amp; ανάπτυξη organic / affiliate marketing (SEO).</li>
+              <li>Λειτουργίες σε 7 ευρωπαϊκές αγορές · ομάδα 20–30 ατόμων.</li>
+              <li>Επιτυχής εξαγορά της εταιρείας υπό την ηγεσία του.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h2>Εκπαίδευση</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <p class="year">Σεπτέμβριος 2015</p>
+          <p class="degree">Master of Science: Πολιτική Επιστήμη</p>
+          <p class="school">Universitat Autònoma de Barcelona – Βαρκελώνη</p>
+        </div>
+        <div class="edu-card">
+          <p class="year">Σεπτέμβριος 2012</p>
+          <p class="degree">Bachelor of Arts: Επικοινωνία, Μέσα &amp; Πολιτισμός</p>
+          <p class="school">Πάντειο Πανεπιστήμιο – Αθήνα</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    (function () {
+      const mosaic = document.getElementById('photoMosaic');
+      const imgs = Array.from(mosaic.querySelectorAll('img'));
+      const dotsContainer = document.getElementById('mosaicDots');
+      let current = 0;
+
+      // Build dots
+      imgs.forEach((_, i) => {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      });
+      const dots = Array.from(dotsContainer.children);
+
+      function goTo(index) {
+        imgs[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + imgs.length) % imgs.length;
+        imgs[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      // Arrow buttons
+      document.getElementById('mosaicNext').addEventListener('click', () => goTo(current + 1));
+      document.getElementById('mosaicPrev').addEventListener('click', () => goTo(current - 1));
+
+      // Touch swipe
+      let touchStartX = null;
+      mosaic.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      mosaic.addEventListener('touchend', e => {
+        if (touchStartX === null) return;
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+        touchStartX = null;
+      }, { passive: true });
+    })();
+  </script>
+
+  <!-- CONTACT SECTION -->
+  <div class="container" style="padding-top:24px;">
+    <section id="contact" style="margin-bottom:0;">
+      <p class="section-label">Social &amp; Επικοινωνία</p>
+      <h2>Επικοινωνία</h2>
+      <ul class="social-links" style="list-style:none;padding:0;">
+        <li><a class="social-pill" href="mailto:arisvourvoulias@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#EA4335"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          arisvourvoulias@gmail.com
+        </a></li>
+        <li><a class="social-pill" href="https://x.com/ArisVourvoulias" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="color:#000000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          @ArisVourvoulias
+        </a></li>
+        <li><a class="social-pill" href="https://www.linkedin.com/in/arisvourvoulias/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="color:#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a></li>
+        <li><a class="social-pill" href="https://www.instagram.com/vourvouliasaris/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="color:#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          Instagram
+        </a></li>
+        <li><a class="social-pill" href="https://www.facebook.com/aris.vrvou/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="color:#1877F2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+          Facebook
+        </a></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Άρης Βουρβούλιας &nbsp;&middot;&nbsp;
+      <a href="mailto:arisvourvoulias@gmail.com">arisvourvoulias@gmail.com</a>
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.video-thumb button[data-vid]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var vid = btn.dataset.vid;
+        var start = btn.dataset.start ? '&start=' + btn.dataset.start : '';
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + vid + '?autoplay=1&enablejsapi=1' + start;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.dataset.vid = vid;
+        btn.replaceWith(iframe);
+      });
+    });
+
+    // When YouTube blocks embedding (error 101/150/153), replace the iframe with a fallback link
+    window.addEventListener('message', function(e) {
+      if (e.origin !== 'https://www.youtube.com') return;
+      var data;
+      try { data = JSON.parse(e.data); } catch(err) { return; }
+      if (data.event === 'onError' && (data.info === 101 || data.info === 150 || data.info === 153)) {
+        document.querySelectorAll('.video-thumb iframe').forEach(function(iframe) {
+          if (iframe.contentWindow === e.source) {
+            var vid = iframe.dataset.vid;
+            var fallback = document.createElement('a');
+            fallback.href = 'https://www.youtube.com/watch?v=' + vid;
+            fallback.target = '_blank';
+            fallback.rel = 'noopener noreferrer';
+            fallback.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0f0f0f;color:#fff;font-family:Inter,sans-serif;font-size:.85rem;text-decoration:none;gap:10px;';
+            fallback.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48"><path fill="red" d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19C0 8.04 0 12 0 12s0 3.96.5 5.81a3.02 3.02 0 0 0 2.12 2.14C4.46 20.5 12 20.5 12 20.5s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14C24 15.96 24 12 24 12s0-3.96-.5-5.81z"/><polygon fill="white" points="9.75,15.02 15.5,12 9.75,8.98"/></svg><span>Δες στο YouTube ↗</span>';
+            iframe.replaceWith(fallback);
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
