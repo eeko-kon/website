@@ -10,6 +10,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { overflow-x: clip; }
+    html { overflow-x: clip; }
 
     :root {
       --navy:         #0f1f3d;
@@ -186,6 +187,28 @@
       justify-content: center;
       flex-wrap: nowrap;
       white-space: nowrap;
+      min-width: max-content;
+      padding: 0 8px;
+    }
+    @media (max-width: 640px) {
+      .nav-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        white-space: normal;
+        min-width: unset;
+        padding: 2px 0;
+        width: 100%;
+        gap: 0;
+        row-gap: 0;
+      }
+      nav a {
+        text-align: center;
+        padding: 5px 8px;
+        font-size: 0.72rem;
+        line-height: 1;
+      }
+      nav a::after { display: none; }
     }
     nav a {
       color: var(--muted);
@@ -336,9 +359,9 @@
       .outlets-grid { gap: 16px; }
     }
     .outlet-card {
-      background: var(--surface);
+      background: var(--accent-light);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: none;
       padding: 24px 28px;
       transition: transform .25s, box-shadow .25s;
       display: flex;
@@ -346,7 +369,7 @@
       align-items: center;
       gap: 32px;
     }
-    .outlet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .outlet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
     .outlet-card h3 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.05rem;
