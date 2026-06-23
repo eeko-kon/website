@@ -293,6 +293,10 @@
       grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 20px;
     }
+    .video-grid--2col { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 640px) {
+      .video-grid--2col { grid-template-columns: 1fr; }
+    }
     .video-card {
       border-radius: 10px;
       overflow: hidden;
@@ -1028,7 +1032,8 @@
       <!-- «Εδώ» -->
       <div style="margin-bottom:40px;">
         <p class="section-label" style="margin-bottom:12px;">«Εδώ» – One Channel</p>
-        <div class="video-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="video-grid video-grid--2col">
+
           <div class="video-card">
             <div class="video-label">📺 14 Σκιές και Αλήθειες – Παρουσίαση βιβλίου (4.12.2025)</div>
             <div class="video-thumb">
