@@ -6,7 +6,7 @@
   <title>Άρης Βουρβούλιας – Συγγραφέας &amp; Πολιτικός Αναλυτής</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,14 +25,14 @@
       --shadow-hover: 0 8px 40px rgba(15,31,61,0.16);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 18px; }
 
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
-      font-size: 16px;
+      line-height: 1.8;
+      font-size: 1rem;
     }
 
     /* HERO SPLIT */
@@ -108,11 +108,11 @@
     .hero-text {
       background: var(--navy);
       color: #fff;
-      padding: 64px 52px;
+      padding: 72px 60px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
     }
     .hero-tag {
       display: inline-block;
@@ -128,13 +128,14 @@
       border-radius: 100px;
     }
     .hero-text h1 {
-      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
       font-weight: 700;
       line-height: 1.1;
+      font-family: 'Playfair Display', Georgia, serif;
       color: #fff;
     }
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 300;
       color: #aec6e8;
       font-style: italic;
@@ -143,7 +144,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px 20px;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: #ccd9ee;
     }
     @media (max-width: 640px) {
@@ -162,8 +163,8 @@
       gap: 14px;
     }
     .hero-bio p {
-      font-size: 0.93rem;
-      line-height: 1.75;
+      font-size: 1rem;
+      line-height: 1.8;
       color: #ccd9ee;
     }
     .hero-bio em { color: var(--accent); font-style: italic; }
@@ -182,13 +183,14 @@
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      white-space: nowrap;
     }
     nav a {
       color: var(--muted);
       text-decoration: none;
       padding: 12px 14px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 500;
       letter-spacing: 0.02em;
       transition: color .2s;
@@ -206,8 +208,8 @@
     nav a:hover::after { left: 16px; right: 16px; }
 
     /* LAYOUT */
-    .container { max-width: 900px; margin: 0 auto; padding: 72px 24px; }
-    section { margin-bottom: 88px; }
+    .container { max-width: 980px; margin: 0 auto; padding: 80px 28px; }
+    .container section { margin-bottom: 96px; }
 
     .section-label {
       font-size: 0.7rem;
@@ -218,17 +220,17 @@
       margin-bottom: 8px;
     }
     section h2 {
-      font-family: 'Inter', sans-serif;
-      font-size: 2rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.4rem;
       color: var(--navy);
-      margin-bottom: 32px;
-      padding-bottom: 14px;
+      margin-bottom: 36px;
+      padding-bottom: 16px;
       border-bottom: 2px solid var(--accent-light);
     }
 
     /* BIO */
-    .bio-grid { display: flex; flex-direction: column; gap: 16px; }
-    .bio-grid p { font-size: 1.05rem; color: #374151; line-height: 1.85; }
+    .bio-grid { display: flex; flex-direction: column; gap: 20px; }
+    .bio-grid p { font-size: 1.1rem; color: #374151; line-height: 1.9; }
 
     /* BOOK */
     .book-card {
@@ -326,14 +328,11 @@
     /* ARTICLES */
     .outlets-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1fr;
       gap: 20px;
     }
-    @media (max-width: 900px) {
-      .outlets-grid { grid-template-columns: repeat(2, 1fr); }
-    }
     @media (max-width: 500px) {
-      .outlets-grid { grid-template-columns: 1fr; }
+      .outlets-grid { gap: 16px; }
     }
     .outlet-card {
       background: var(--surface);
@@ -341,28 +340,41 @@
       box-shadow: var(--shadow);
       padding: 24px 28px;
       transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
     }
     .outlet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
     .outlet-card h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
       color: var(--navy);
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--accent-light);
+      min-width: 160px;
+      padding-right: 24px;
+      border-right: 1px solid var(--accent-light);
+      padding-top: 4px;
+      flex-shrink: 0;
     }
-    .outlet-card ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .outlet-card ol { padding-left: 18px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px 32px; flex: 1; font-size: 0.93rem; }
+    .outlet-card ol li { min-width: 220px; }
+    @media (max-width: 700px) {
+      .outlet-card { flex-direction: column; gap: 12px; }
+      .outlet-card h3 { min-width: unset; padding-right: 0; border-right: none; border-bottom: 1px solid var(--accent-light); padding-bottom: 10px; padding-top: 0; margin-bottom: 0; }
+      .outlet-card ol { flex-direction: column; flex-wrap: nowrap; gap: 8px; }
+      .outlet-card ol li { min-width: unset; }
+    }
     .outlet-card ol li a {
       color: var(--navy-mid);
       text-decoration: none;
-      font-size: 0.78rem;
-      line-height: 1.5;
+      font-size: 0.93rem;
+      line-height: 1.55;
       transition: color .2s;
     }
     .outlet-card ol li a:hover { color: var(--accent); }
 
     /* PODCAST */
-    .podcast-intro { color: #374151; margin-bottom: 24px; font-size: 1rem; line-height: 1.8; }
+    .podcast-intro { color: #374151; margin-bottom: 24px; font-size: 1.08rem; line-height: 1.85; }
     .podcast-episodes {
       display: flex;
       flex-direction: column;
@@ -447,11 +459,11 @@
       background: var(--surface);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 14px 22px;
+      padding: 16px 24px;
       text-decoration: none;
       color: var(--navy);
       font-weight: 500;
-      font-size: .95rem;
+      font-size: 1.02rem;
       transition: transform .2s, box-shadow .2s, color .2s;
     }
     .social-pill:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); color: var(--accent); }
@@ -459,11 +471,11 @@
 
     /* CV TIMELINE */
     .cv-heading {
-      font-family: 'Inter', sans-serif;
-      font-size: 2rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.4rem;
       color: var(--navy);
-      margin-bottom: 24px;
-      margin-top: 44px;
+      margin-bottom: 28px;
+      margin-top: 48px;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -472,7 +484,7 @@
     .timeline { display: flex; flex-direction: column; }
     .tl-item {
       display: grid;
-      grid-template-columns: 160px 1fr;
+      grid-template-columns: 175px 1fr;
       gap: 0 24px;
       position: relative;
       padding-bottom: 28px;
@@ -480,7 +492,7 @@
     .tl-item::before {
       content: '';
       position: absolute;
-      left: 168px; top: 8px; bottom: 0;
+      left: 183px; top: 8px; bottom: 0;
       width: 2px;
       background: linear-gradient(to bottom, var(--accent-light), transparent);
     }
@@ -492,10 +504,11 @@
       text-align: right;
       padding-top: 5px;
       padding-right: 24px;
+      white-space: nowrap;
     }
     .tl-dot {
       position: absolute;
-      left: 160px; top: 6px;
+      left: 175px; top: 6px;
       width: 16px; height: 16px;
       background: var(--accent);
       border: 3px solid var(--bg);
@@ -509,9 +522,9 @@
       box-shadow: var(--shadow);
       margin-left: 16px;
     }
-    .tl-body h3 { font-size: .97rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
-    .tl-body .org { font-size: .83rem; color: var(--muted); font-style: italic; margin-bottom: 0; }
-    .tl-body ul { padding-left: 18px; font-size: .88rem; color: #4b5563; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px; }
+    .tl-body h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .tl-body .org { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-bottom: 0; }
+    .tl-body ul { padding-left: 18px; font-size: 0.93rem; color: #4b5563; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px; }
 
     /* EDUCATION */
     .edu-grid {
@@ -526,17 +539,190 @@
       padding: 22px 26px;
       border-top: 3px solid var(--accent);
     }
-    .edu-card .year { font-size: .75rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
-    .edu-card .degree { font-weight: 600; color: var(--navy); font-size: .95rem; margin-bottom: 4px; }
-    .edu-card .school { font-size: .86rem; color: var(--muted); font-style: italic; }
+    .edu-card .year { font-size: 0.8rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+    .edu-card .degree { font-weight: 600; color: var(--navy); font-size: 1rem; margin-bottom: 4px; }
+    .edu-card .school { font-size: 0.92rem; color: var(--muted); font-style: italic; }
+
+    /* CHRONOLOGICAL MAP – GANTT */
+    .cm-section {
+      background: linear-gradient(160deg, #0d1b36 0%, #162848 55%, #1a3461 100%);
+      padding: 80px 28px 96px;
+      position: relative;
+    }
+    .cm-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 85% 15%, rgba(200,169,110,.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cm-inner { max-width: 940px; margin: 0 auto; position: relative; z-index: 1; }
+    .cm-header { text-align: center; margin-bottom: 52px; }
+    .cm-eyebrow {
+      display: block;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(200,169,110,.6); margin-bottom: 10px;
+    }
+    .cm-h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; font-weight: 700; margin-bottom: 28px;
+    }
+    .cm-filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .cm-f {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
+      color: #8aaccf; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
+      padding: 7px 20px; border-radius: 100px; cursor: pointer;
+      transition: background .2s, border-color .2s, color .2s, transform .15s;
+    }
+    .cm-f:hover { background: rgba(200,169,110,.12); border-color: rgba(200,169,110,.35); color: #c8a96e; transform: translateY(-1px); }
+    .cm-f.active { background: #c8a96e; border-color: #c8a96e; color: #0f1f3d; font-weight: 600; }
+    /* Gantt chart */
+    .gantt-scroll { overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+    .gantt-chart { min-width: 560px; }
+    /* Location strip */
+    .gantt-loc-row { display: flex; margin-bottom: 4px; }
+    .gantt-loc-track { flex: 1; position: relative; height: 22px; }
+    .g-loc {
+      position: absolute; top: 0; height: 22px; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; white-space: nowrap; overflow: visible;
+    }
+    .g-loc span { position: relative; z-index: 1; padding: 0 6px; }
+    .g-loc--ath  { background: rgba(110,203,163,.18); border: 1px solid rgba(110,203,163,.35); color: #6ecba3; }
+    .g-loc--bcn  { background: rgba(79,156,249,.18);  border: 1px solid rgba(79,156,249,.38);  color: #7dbfff; }
+    .g-loc--cph  { background: rgba(167,139,250,.18); border: 1px solid rgba(167,139,250,.38); color: #c4b5fd; }
+    .gantt-top { display: flex; margin-bottom: 10px; }
+    .gantt-lpad { width: 152px; flex-shrink: 0; }
+    .gantt-axis {
+      flex: 1; position: relative; height: 26px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .gantt-yr {
+      position: absolute; bottom: 5px; transform: translateX(-50%);
+      font-size: .65rem; font-weight: 500; color: #4a6080;
+      letter-spacing: .03em; white-space: nowrap;
+    }
+    .gantt-body { position: relative; }
+    .gantt-body-grid {
+      position: absolute; top: 0; bottom: 0; left: 152px; right: 0; pointer-events: none;
+    }
+    .gantt-vline { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,.05); }
+    /* Category divider */
+    .gantt-cat { display: flex; align-items: center; margin: 20px 0 10px; transition: opacity .3s, max-height .3s; overflow: hidden; }
+    .gantt-cat.cm-hidden { opacity: 0; max-height: 0; margin: 0; pointer-events: none; }
+    .gantt-cat-lbl {
+      width: 152px; flex-shrink: 0; text-align: right; padding-right: 16px;
+      font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .gantt-cat-lbl--edu  { color: #4f9cf9; }
+    .gantt-cat-lbl--work { color: #c8a96e; }
+    .gantt-cat-lbl--pub  { color: #6ecba3; }
+    .gantt-cat-line { flex: 1; height: 1px; background: rgba(255,255,255,.07); }
+    /* Rows */
+    .gantt-row {
+      display: flex; align-items: center; min-height: 46px; margin-bottom: 7px;
+      transition: opacity .3s, transform .3s;
+    }
+    .gantt-row.cm-hidden { opacity: .05; pointer-events: none; transform: scaleY(0.8); }
+    .gantt-rlabel { width: 152px; flex-shrink: 0; padding-right: 16px; text-align: right; }
+    .gantt-rlabel .rt { display: block; font-size: .8rem; font-weight: 600; color: #8aaccf; line-height: 1.25; }
+    .gantt-rlabel .rs { display: block; font-size: .67rem; color: #4a6080; font-style: italic; margin-top: 2px; }
+    .gantt-track { flex: 1; position: relative; height: 46px; }
+    /* Bars */
+    .g-bar {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      height: 26px; border-radius: 6px; cursor: default;
+      display: flex; align-items: center; padding: 0 9px;
+      overflow: visible;
+      transition: filter .18s, transform .18s, box-shadow .18s;
+    }
+    .g-bar:hover {
+      filter: brightness(1.28); transform: translateY(calc(-50% - 2px));
+      box-shadow: 0 6px 24px rgba(0,0,0,.45); z-index: 5;
+    }
+    .g-bar--edu  { background: rgba(79,156,249,.2);  border: 1px solid rgba(79,156,249,.45); }
+    .g-bar--work { background: rgba(200,169,110,.18); border: 1px solid rgba(200,169,110,.45); }
+    .g-bar--pub  { background: rgba(110,203,163,.18); border: 1px solid rgba(110,203,163,.45); }
+    .g-bar--ongoing { border-right: 1px dashed rgba(255,255,255,.22); border-radius: 6px 0 0 6px; }
+    .g-bl { font-size: .69rem; font-weight: 600; pointer-events: none; white-space: nowrap; }
+    .g-bar--edu  .g-bl { color: #7dbfff; }
+    .g-bar--work .g-bl { color: #d4b87a; }
+    .g-bar--pub  .g-bl { color: #7ed4ae; }
+    .g-bl--out   { text-shadow: 0 1px 4px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.7); }
+    /* Milestone */
+    .g-ms {
+      position: absolute; top: 50%; transform: translate(-50%, -50%);
+      width: 28px; height: 46px;
+      display: flex; align-items: center; justify-content: center; cursor: default;
+    }
+    .g-ms-diamond {
+      width: 13px; height: 13px; flex-shrink: 0;
+      background: #c8a96e; border: 2px solid #f0e4c8;
+      transform: rotate(45deg);
+      box-shadow: 0 0 14px rgba(200,169,110,.7);
+      transition: transform .2s, filter .2s;
+    }
+    .g-ms:hover .g-ms-diamond { transform: rotate(45deg) scale(1.6); filter: brightness(1.25); }
+    /* Tooltip (fixed, via JS) */
+    .g-tip {
+      position: fixed; background: #07111f;
+      border: 1px solid rgba(200,169,110,.28); border-radius: 10px;
+      padding: 14px 16px; min-width: 200px; max-width: 256px;
+      box-shadow: 0 12px 44px rgba(0,0,0,.7); pointer-events: none;
+      z-index: 9999; display: none;
+    }
+    .g-tip.show { display: block; }
+    .g-tip-title { font-size: .9rem; font-weight: 600; color: #e0e8f4; margin-bottom: 3px; }
+    .g-tip-org { font-size: .75rem; color: #7a96c0; font-style: italic; margin-bottom: 9px; padding-bottom: 9px; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .g-tip-dates { font-size: .68rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #c8a96e; margin-bottom: 6px; }
+    .g-tip-desc { font-size: .78rem; color: #637a97; line-height: 1.6; }
+    .g-tip-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 10px; padding: 5px 11px;
+      background: rgba(200,169,110,.12); border: 1px solid rgba(200,169,110,.3);
+      border-radius: 6px; color: #c8a96e; font-size: .71rem; font-weight: 600;
+      text-decoration: none; white-space: nowrap; transition: background .2s;
+    }
+    .g-tip-link:hover { background: rgba(200,169,110,.28); }
+    /* Publication milestone dots */
+    .g-pub-dot {
+      position: absolute; top: 50%; transform: translate(-50%, -50%);
+      width: 24px; height: 46px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; text-decoration: none; color: inherit;
+    }
+    .g-pub-circle {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: #6ecba3; border: 2px solid #0d1b36;
+      box-shadow: 0 0 6px rgba(110,203,163,.4);
+      transition: transform .2s, filter .2s, box-shadow .2s;
+    }
+    .g-pub-dot:hover .g-pub-circle {
+      transform: scale(1.9); filter: brightness(1.25);
+      box-shadow: 0 0 12px rgba(110,203,163,.65);
+    }
+    .g-pub-dot--book .g-pub-circle {
+      background: #c8a96e; border-color: #0d1b36;
+      box-shadow: 0 0 8px rgba(200,169,110,.5);
+      width: 11px; height: 11px;
+    }
+    .g-pub-dot--book:hover .g-pub-circle { box-shadow: 0 0 16px rgba(200,169,110,.8); }
+    .g-pub-dot--audio .g-pub-circle {
+      background: #a78bfa; border-color: #0d1b36;
+      box-shadow: 0 0 6px rgba(167,139,250,.4);
+    }
+    .g-pub-dot--audio:hover .g-pub-circle {
+      box-shadow: 0 0 14px rgba(167,139,250,.7);
+    }
 
     /* FOOTER */
     footer {
       background: var(--navy);
       color: #7a96c0;
       text-align: center;
-      padding: 32px 24px;
-      font-size: .87rem;
+      padding: 36px 24px;
+      font-size: 0.94rem;
     }
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
@@ -545,11 +731,11 @@
     @media (max-width: 900px) {
       .hero-split { grid-template-columns: 1fr; min-height: auto; }
       .photo-mosaic { height: 70vw; position: relative; }
-      .hero-text { padding: 48px 24px; }
+      .hero-text { padding: 52px 28px; }
     }
     @media (max-width: 640px) {
       .photo-mosaic { height: 80vw; }
-      .hero-text { padding: 32px 18px; }
+      .hero-text { padding: 36px 20px; }
       .tl-item { grid-template-columns: 1fr; }
       .tl-item::before, .tl-dot { display: none; }
       .tl-period { text-align: left; font-size: .75rem; }
@@ -579,9 +765,9 @@
       <div class="mosaic-dots" id="mosaicDots"></div>
     </div>
     <div class="hero-text">
-      <span class="hero-tag">Συγγραφέας &amp; Πολιτικός Αναλυτής</span>
+      <span class="hero-tag">Προφίλ</span>
       <h1>Άρης Βουρβούλιας</h1>
-      <p class="hero-subtitle">Author &amp; Political Analyst · Athens, Greece</p>
+      <p class="hero-subtitle">Δημοσιογράφος, Πολιτικός Αναλυτής και Συγγραφέας</p>
       <div class="hero-contact">
         <span>📍 Αθήνα</span>
         <a href="mailto:arisvourvoulias@gmail.com">arisvourvoulias@gmail.com</a>
@@ -589,17 +775,13 @@
       </div>
       <div class="hero-bio">
         <p>
-          Είμαι συγγραφέας και πολιτικός αναλυτής με υπόβαθρο στη δημοσιογραφία, τα μέσα ενημέρωσης και την
-          πολιτική επιστήμη. Πρόσφατα συνυπέγραψα με τον Σταύρο Θεοδωράκη το ερευνητικό bestseller
-          <em>«14 Σκιές και Αλήθειες της Ελλάδας»</em>. Κατά καιρούς έχω αρθρογραφήσει σε κορυφαία ελληνικά
-          ΜΜΕ, ενώ έχω δημιουργήσει και τη δική μου σειρά podcast.
+          Ο Άρης Βουρβούλιας είναι δημοσιογράφος, συγγραφέας και πολιτικός αναλυτής, με σπουδές στη δημοσιογραφία και τις πολιτικές επιστήμες. Τον Δεκέμβριο του 2025 συνυπέγραψε με τον Σταύρο Θεοδωράκη το <em>«14 Σκιές και Αλήθειες της Ελλάδας»</em> (εκδόσεις Μεταίχμιο), που γνώρισε σημαντική εμπορική επιτυχία ήδη από τον πρώτο μήνα της κυκλοφορίας του.
         </p>
         <p>
-          Για δέκα χρόνια έζησα στην Κοπεγχάγη, έχοντας προηγουμένως ζήσει και εργαστεί στην Ισπανία και την 
-          Ελλάδα. Στη διάρκεια της επαγγελματικής μου πορείας συνέβαλα καθοριστικά στην ανάπτυξη του AWM Network, 
-          σημερινού Lead.io, μιας εταιρείας που εξαγοράστηκε επιτυχώς το 2021. Στη συνέχεια υπηρέτησα ως COO της 
-          Lånio ApS. Σήμερα έχω επιστρέψει στην Αθήνα, συνεχίζοντας να κινούμαι στο πεδίο όπου τέμνονται η 
-          πολιτική ανάλυση, η επιχειρηματικότητα, τα μέσα και η δημόσια συζήτηση.
+          Από το 2014 έως το 2025 έζησε στο εξωτερικό, κυρίως στην Κοπεγχάγη αλλά και ένα μικρό διάστημα στη Βαρκελώνη. Στη διάρκεια της επαγγελματικής του πορείας στο εξωτερικό συνέβαλε, από θέσεις ευθύνης, στην ανάπτυξη νεοφυών επιχειρήσεων — όπως της AWM Network, βοηθώντας στην εξαγορά της εταιρείας το 2021 από τη σημερινή Leads.io. Εν συνεχεία διετέλεσε για τέσσερα χρόνια COO της Lånio ApS, ενώ παράλληλα αρθρογραφούσε σε ορισμένα από τα σημαντικότερα μέσα ενημέρωσης της Ελλάδας. Το 2023 δημιούργησε τη σειρά podcast «Do it Like», τα δικαιώματα της οποίας απέκτησε το Pod.gr.
+        </p>
+        <p>
+          Από το 2025 έχει επιστρέψει στην Αθήνα, αναζητώντας νέες προκλήσεις που ενώνουν δύο κόσμους: τα ενδιαφέροντά του για την έρευνα, την πολιτική και τα μέσα επικοινωνίας, και την εμπειρία του στην ανάπτυξη επιχειρήσεων.
         </p>
       </div>
     </div>
@@ -610,9 +792,8 @@
     <div class="nav-inner">
       <a href="#bio">Προφίλ</a>
       <a href="#book">Βιβλίο</a>
-      <a href="#articles">Αρθρογραφία</a>
+      <a href="#articles">Δημοσιογραφία</a>
       <a href="#interviews">Συνεντεύξεις</a>
-      <a href="#podcast">Podcast</a>
       <a href="#cv">Βιογραφικό</a>
       <a href="#contact">Επικοινωνία</a>
     </div>
@@ -624,13 +805,15 @@
 
     <!-- BOOK -->
     <section id="book">
-      <p class="section-label">Συγγραφή</p>
+      <p class="section-label">«14 Σκιές και Αλήθειες της Ελλάδας»</p>
       <h2>Βιβλίο</h2>
       <div class="book-card">
         <p>
-          Τον Δεκέμβριο του 2025 κυκλοφόρησε από τις Εκδόσεις <strong>Μεταίχμιο</strong> το ερευνητικό βιβλίο
-          <em>14 Σκιές και Αλήθειες της Ελλάδας</em>, το οποίο συνυπογράφω με τον Σταύρο Θεοδωράκη.
-          Το βιβλίο γνώρισε σημαντική εμπορική επιτυχία ήδη από τις πρώτες εβδομάδες κυκλοφορίας του.
+          Ο Σταύρος Θεοδωράκης και ο Άρης Βουρβούλιας ερευνούν και παρουσιάζουν αναλυτικά στοιχεία για 14 καίρια ζητήματα της χώρας. Μέσα από 14 σύνθετες ερευνητικές ερωτήσεις, αφηγούνται ορισμένες από τις πιο ενδιαφέρουσες και σημαντικές ιστορίες που έχει να προσφέρει η στατιστική της Ελλάδας. Το βιβλίο συγκεντρώνει έναν πλούτο δεδομένων, με πάνω από 110 γραφήματα και πίνακες, καθώς και ένα λεξικό.
+        </p>
+        <p>
+          <strong>Οι 14 θεματικές ενότητες:</strong><br>
+          Αντιβιοτικά – Απορρίμματα – Γυναικοκτονίες – Δημογραφικό – Δικαιοσύνη – Επιδοτήσεις – Καινοτομία – Καισαρικές – Παχυσαρκία – PISA – Στεγαστικό – Τροχαία – Φοροδιαφυγή – Ψηφιοποίηση.
         </p>
         <ul class="book-links">
           <li>
@@ -661,14 +844,16 @@
           </div>
         </div>
       </div>
+
     </section>
 
     <!-- ARTICLES -->
     <section id="articles">
       <p class="section-label">Δημοσιογραφία</p>
-      <h2>Αρθρογραφία</h2>
+
+      <h2 style="margin-top:8px;">Αρθρογραφία</h2>
       <p style="color:#4b5563;margin-bottom:28px;line-height:1.8;">
-        Κατά καιρούς έχω αρθρογραφήσει ως εξωτερικός συνεργάτης σε διάφορα μέσα ενημέρωσης, μεταξύ των οποίων η
+        Έχει αρθρογραφήσει ως εξωτερικός συνεργάτης σε μέσα ενημέρωσης όπως η
         <strong>Καθημερινή</strong>, το <strong>Έθνος</strong>, η <strong>HuffPost Greece</strong>,
         το <strong>iEfimerida</strong> και η <strong>Εφημερίδα των Συντακτών</strong>.
       </p>
@@ -744,6 +929,50 @@
           </ol>
         </div>
       </div>
+      <h2 id="podcast" style="margin-top:52px;">Podcast</h2>
+      <p class="podcast-intro">
+        Ένα podcast του Pod.gr για τα success stories διαφορετικών χωρών, το καθένα σε ένα ξεχωριστό πεδίο της πολιτικής και κοινωνικής ζωής. Κάθε επεισόδιο εξερευνά τους λόγους για τους οποίους τα συγκεκριμένα κράτη κατάφεραν να ξεχωρίσουν στη σύγχρονη ιστορία, καθώς και τη διαδρομή που ακολούθησαν μέχρι να φτάσουν σε αυτό το σημείο. Φωτίζοντας θετικές αλλά και σκοτεινές πτυχές, το <em><strong>Do it Like</strong></em> είναι μια πολύπλευρη έρευνα, γεμάτη στοιχεία, για τις εξαιρέσεις και τους εξαίρετους της ιστορίας.
+      </p>
+      <div class="podcast-episodes">
+        <div class="podcast-episode-card">
+          <div class="podcast-episode-label">🎙 Do it Like – Ολλανδία &nbsp;·&nbsp; Ατομικά Δικαιώματα &amp; Ελευθερίες</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/7tVegwdsUvDDtuTfFOf9d0?utm_source=generator"
+            width="100%" height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="podcast-episode-card">
+          <div class="podcast-episode-label">🎙 Do it Like – Ιαπωνία &nbsp;·&nbsp; Τεχνολογία</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/4Z25GGBYZbPXD8QUC5aPnP?utm_source=generator"
+            width="100%" height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+      <p style="color:#4b5563;margin-top:20px;margin-bottom:14px;font-size:.95rem;">
+        Βρείτε όλα τα επεισόδια, καθώς και το πλήρες προφίλ του podcast, στο <strong>Pod.gr</strong>:
+      </p>
+      <a class="kath-link" href="https://pod.gr/aris-vourvoulias/" target="_blank" rel="noopener">
+        → Άρης Βουρβούλιας στο Pod.gr
+      </a>
+      <p style="color:#4b5563;margin-top:32px;margin-bottom:14px;font-size:.95rem;">
+        Η σειρά σε συνεργασία με την <strong>«Καθημερινή»</strong>, πλαισιωνόταν από ένα αποκλειστικό άρθρο για κάθε επεισόδιο.
+      </p>
+      <ol style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562665625/do-it-like-singapore/" target="_blank" rel="noopener">🇸🇬 Do it Like Singapore</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562703923/podcast-do-it-like-estonia-psifiaki-diakyvernisi/" target="_blank" rel="noopener">🇪🇪 Do it Like Estonia: Ψηφιακή Διακυβέρνηση</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562742725/do-it-like-finland-paideia/" target="_blank" rel="noopener">🇫🇮 Do it Like Finland: Παιδεία</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562780213/do-it-like-new-zealand-epicheirimatiko-perivallon/" target="_blank" rel="noopener">🇳🇿 Do it Like New Zealand: Επιχειρηματικό Περιβάλλον</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562822012/do-it-like-japan-technologia/" target="_blank" rel="noopener">🇯🇵 Do it Like Japan: Τεχνολογία</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562858777/do-it-like-denmark-kratos-pronoias/" target="_blank" rel="noopener">🇩🇰 Do it Like Denmark: Κράτος Πρόνοιας</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562894786/do-it-like-the-netherlands-atomika-dikaiomata-amp-eleytheries/" target="_blank" rel="noopener">🇳🇱 Do it Like the Netherlands: Ατομικά Δικαιώματα &amp; Ελευθερίες</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562939207/do-it-like-great-britain-antiprosopeytiki-dimokratia-a-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Α΄ Μέρος</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562962547/do-it-like-great-britain-antiprosopeytiki-dimokratia-v-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Β΄ Μέρος</a></li>
+      </ol>
     </section>
 
     <!-- INTERVIEWS -->
@@ -753,7 +982,7 @@
 
       <!-- Εθνικός Κήρυκας -->
       <div style="margin-bottom:32px;">
-        <p class="section-label" style="margin-bottom:12px;">Εθνικός Κήρυκας</p>
+        <p class="section-label" style="margin-bottom:12px;">Μεγάλο Αφιέρωμα στον Εθνικό Κήρυκα</p>
         <a href="https://www.ekirikas.com/aris-vourvoulias-oi-skies-pou-megalos/" target="_blank" rel="noopener" style="color:var(--navy-mid);text-decoration:none;font-size:.88rem;transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--navy-mid)'">
           Άρης Βουρβούλιας: Οι σκιές που μεγάλωσαν μαζί μας
         </a>
@@ -762,7 +991,7 @@
       <!-- «Εδώ» -->
       <div style="margin-bottom:40px;">
         <p class="section-label" style="margin-bottom:12px;">«Εδώ» – One Channel</p>
-        <div class="video-grid">
+        <div class="video-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="video-card">
             <div class="video-label">📺 14 Σκιές και Αλήθειες – Παρουσίαση βιβλίου (4.12.2025)</div>
             <div class="video-thumb">
@@ -828,56 +1057,6 @@
       </div>
     </section>
 
-    <!-- PODCAST -->
-    <section id="podcast">
-      <p class="section-label">Audio</p>
-      <h2>Podcast</h2>
-      <p class="podcast-intro">
-        Δημιούργησα τη σειρά podcast <em><strong>Do it Like</strong></em> — μια ερευνητική, αφηγηματική σειρά 9 επεισοδίων που
-        εξερευνά τις ιστορίες επιτυχίας διαφόρων χωρών μέσα από διαφορετικές πτυχές της πολιτικής και κοινωνικής ζωής.
-      </p>
-      <div class="podcast-episodes">
-        <div class="podcast-episode-card">
-          <div class="podcast-episode-label">🎙 Do it Like – Ολλανδία &nbsp;·&nbsp; Ατομικά Δικαιώματα &amp; Ελευθερίες</div>
-          <iframe
-            src="https://open.spotify.com/embed/episode/7tVegwdsUvDDtuTfFOf9d0?utm_source=generator"
-            width="100%" height="152"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
-        </div>
-        <div class="podcast-episode-card">
-          <div class="podcast-episode-label">🎙 Do it Like – Ιαπωνία &nbsp;·&nbsp; Τεχνολογία</div>
-          <iframe
-            src="https://open.spotify.com/embed/episode/4Z25GGBYZbPXD8QUC5aPnP?utm_source=generator"
-            width="100%" height="152"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-      <p style="color:#4b5563;margin-bottom:14px;font-size:.95rem;">
-        Είχαμε επίσης συνεργασία με την <strong>Καθημερινή</strong>, όπου δημοσίευα αποκλειστικό άρθρο για κάθε επεισόδιο:
-      </p>
-      <ol style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562665625/do-it-like-singapore/" target="_blank" rel="noopener">🇸🇬 Do it Like Singapore</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562703923/podcast-do-it-like-estonia-psifiaki-diakyvernisi/" target="_blank" rel="noopener">🇪🇪 Do it Like Estonia: Ψηφιακή Διακυβέρνηση</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562742725/do-it-like-finland-paideia/" target="_blank" rel="noopener">🇫🇮 Do it Like Finland: Παιδεία</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562780213/do-it-like-new-zealand-epicheirimatiko-perivallon/" target="_blank" rel="noopener">🇳🇿 Do it Like New Zealand: Επιχειρηματικό Περιβάλλον</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562822012/do-it-like-japan-technologia/" target="_blank" rel="noopener">🇯🇵 Do it Like Japan: Τεχνολογία</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562858777/do-it-like-denmark-kratos-pronoias/" target="_blank" rel="noopener">🇩🇰 Do it Like Denmark: Κράτος Πρόνοιας</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562894786/do-it-like-the-netherlands-atomika-dikaiomata-amp-eleytheries/" target="_blank" rel="noopener">🇳🇱 Do it Like the Netherlands: Ατομικά Δικαιώματα &amp; Ελευθερίες</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562939207/do-it-like-great-britain-antiprosopeytiki-dimokratia-a-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Α΄ Μέρος</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562962547/do-it-like-great-britain-antiprosopeytiki-dimokratia-v-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Β΄ Μέρος</a></li>
-      </ol>
-      <p style="color:#4b5563;margin-top:24px;margin-bottom:14px;font-size:.95rem;">
-        Δείτε το πλήρες προφίλ του podcast στο <strong>Pod.gr</strong>:
-      </p>
-      <a class="kath-link" href="https://pod.gr/aris-vourvoulias/" target="_blank" rel="noopener">
-        → Άρης Βουρβούλιας στο Pod.gr
-      </a>
-    </section>
-
     <!-- CV -->
     <section id="cv" style="margin-bottom:40px;">
       <p class="section-label">Βιογραφικό</p>
@@ -888,23 +1067,11 @@
           <div class="tl-period">Αυγ 2024 – Δεκ 2025</div>
           <div class="tl-dot"></div>
           <div class="tl-body">
-            <h3>Συγγραφέας</h3>
+            <h3>Έκδοση Βιβλίου</h3>
             <p class="org">Π² – Ινστιτούτο Πρόοδος Στην Πράξη, Αθήνα</p>
             <ul>
-              <li>Συνυπογραφή bestseller <em>«14 Σκιές και Αλήθειες της Ελλάδας»</em> με τον Σταύρο Θεοδωράκη (Εκδόσεις Μεταίχμιο).</li>
-              <li>Ερευνητικό βιβλίο που διερευνά 14 κρίσιμα ζητήματα που αντιμετωπίζει η χώρα.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-period">Οκτ 2021 – Μαρ 2025</div>
-          <div class="tl-dot"></div>
-          <div class="tl-body">
-            <h3>Chief Operating Officer</h3>
-            <p class="org">Lånio.dk ApS, Κοπεγχάγη</p>
-            <ul>
-              <li>Ανάπτυξη επιχειρηματικής στρατηγικής σε συνεργασία με την ανώτατη διοίκηση.</li>
-              <li>Επίβλεψη καθημερινών λειτουργιών και brand development με SEO best practices.</li>
+              <li>Συν-συγγραφέας του πρόσφατου μπεστ σέλερ <em>«14 Σκιές και Αλήθειες της Ελλάδας»</em>, μαζί με τον Σταύρο Θεοδωράκη, που κυκλοφορεί από τις εκδόσεις Μεταίχμιο.</li>
+              <li>Μια έρευνα για 14 καίρια ζητήματα της χώρας, όπως η υπερκατανάλωση αντιβιοτικών, το δημογραφικό, η παιδική παχυσαρκία και η στεγαστική κρίση.</li>
             </ul>
           </div>
         </div>
@@ -916,7 +1083,19 @@
             <p class="org">Pod.gr, Κοπεγχάγη (Εξ αποστάσεως)</p>
             <ul>
               <li>Δημιουργία &amp; παραγωγή της σειράς <em>«Do it Like»</em> για το Pod.gr.</li>
-              <li>Ερευνητική σειρά για ιστορίες επιτυχίας χωρών μέσα από πολιτικές/κοινωνικές πτυχές.</li>
+              <li>Ηχητικά ερευνητικά ντοκιμαντέρ για τις ιστορίες επιτυχίας κρατών σε διαφορετικά κοινωνικά και πολιτικά πεδία.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Οκτ 2021 – Μαρ 2025</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Chief Operating Officer</h3>
+            <p class="org">Lånio.dk ApS, Κοπεγχάγη</p>
+            <ul>
+              <li>Υπεύθυνος για τη στρατηγική κατεύθυνση και την καθημερινή διοίκηση της εταιρείας.</li>
+              <li>Πλήρη ευθύνη για την ανάπτυξη της πλατφόρμας, τη σύναψη και διαχείριση συνεργασιών, την ανάπτυξη του εμπορικού σήματος (brand) και τη στρατηγική SEO.</li>
             </ul>
           </div>
         </div>
@@ -924,11 +1103,11 @@
           <div class="tl-period">Ιουν 2020 – Σήμερα</div>
           <div class="tl-dot"></div>
           <div class="tl-body">
-            <h3>Πολιτικός Αναλυτής &amp; Αρθρογράφος</h3>
-            <p class="org">Ελεύθερος Επαγγελματίας</p>
+            <h3>Αρθρογράφος</h3>
+            <p class="org">Εξωτερικός Συνεργάτης</p>
             <ul>
-              <li>Συνεργασία με kathimerini.gr, iefimerida.gr, ethnos.gr, huffpost.gr κ.ά.</li>
-              <li>Αρθρογραφία για πολιτική, γεωπολιτική και ιστορία.</li>
+              <li>Δημοσιεύσεις στην Καθημερινή, το iEfimerida.gr, το Έθνος, το HuffPost Greece, την Εφημερίδα των Συντακτών (ΕφΣυν), το Lifo.gr κ.ά.</li>
+              <li>Θεματικές αρθρογραφίας: πολιτική, γεωπολιτική και ιστορία.</li>
             </ul>
           </div>
         </div>
@@ -939,9 +1118,53 @@
             <h3>Head of Organic Performance</h3>
             <p class="org">AWM Network ApS, Κοπεγχάγη</p>
             <ul>
-              <li>Στρατηγική περιεχομένου &amp; ανάπτυξη organic / affiliate marketing (SEO).</li>
-              <li>Λειτουργίες σε 7 ευρωπαϊκές αγορές · ομάδα 20–30 ατόμων.</li>
-              <li>Επιτυχής εξαγορά της εταιρείας υπό την ηγεσία του.</li>
+              <li>Υπεύθυνος για τη στρατηγική περιεχομένου, το SEO και το affiliate marketing της εταιρείας.</li>
+              <li>Διαχείριση δραστηριοτήτων σε επτά ευρωπαϊκές αγορές (Ην. Βασίλειο, Δανία, Σουηδία, Φινλανδία κ.ά.)· επικεφαλής ομάδας 20–30 ατόμων.</li>
+              <li>Μέλος της διοικητικής ομάδας κατά την εξαγορά της εταιρείας το 2021 από τη σημερινή Leads.io.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Μαρ 2017 – Δεκ 2017</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>SEO &amp; Content Manager</h3>
+            <p class="org">AWM Network ApS, Κοπεγχάγη</p>
+            <ul>
+              <li>Διαχείριση SEO στρατηγικής και παραγωγής περιεχομένου για πολλαπλές αγορές.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Ιουλ 2016 – Φεβ 2017</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Content Coordinator</h3>
+            <p class="org">AWM Network ApS, Κοπεγχάγη</p>
+            <ul>
+              <li>Απευθείας πρόσληψη μετά την πρακτική άσκηση · συντονισμός ομάδας παραγωγής περιεχομένου.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">Ιαν 2016 – Ιουν 2016</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Πρακτική Άσκηση</h3>
+            <p class="org">AWM Network ApS, Κοπεγχάγη</p>
+            <ul>
+              <li>6μηνη πρακτική άσκηση στην AWM Network μετά την ολοκλήρωση του MSc.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2012</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <h3>Πρακτική Άσκηση</h3>
+            <p class="org">Pkool, Αθήνα</p>
+            <ul>
+              <li>Πρακτική άσκηση αρθρογραφίας κατά τη διάρκεια των προπτυχιακών σπουδών.</li>
             </ul>
           </div>
         </div>
@@ -951,12 +1174,12 @@
       <div class="edu-grid">
         <div class="edu-card">
           <p class="year">Σεπτέμβριος 2015</p>
-          <p class="degree">Master of Science: Πολιτική Επιστήμη</p>
+          <p class="degree">Master: Πολιτικές Επιστήμες</p>
           <p class="school">Universitat Autònoma de Barcelona – Βαρκελώνη</p>
         </div>
         <div class="edu-card">
           <p class="year">Σεπτέμβριος 2012</p>
-          <p class="degree">Bachelor of Arts: Επικοινωνία, Μέσα &amp; Πολιτισμός</p>
+          <p class="degree">Bachelor: Επικοινωνία, Μέσα &amp; Πολιτισμός</p>
           <p class="school">Πάντειο Πανεπιστήμιο – Αθήνα</p>
         </div>
       </div>
@@ -1014,9 +1237,9 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#EA4335"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
           arisvourvoulias@gmail.com
         </a></li>
-        <li><a class="social-pill" href="https://x.com/ArisVourvoulias" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="color:#000000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          @ArisVourvoulias
+        <li><a class="social-pill" href="tel:+306976226800">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#16a34a"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/></svg>
+          6976 226 800
         </a></li>
         <li><a class="social-pill" href="https://www.linkedin.com/in/arisvourvoulias/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" style="color:#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1076,5 +1299,100 @@
     });
   </script>
 
+  <script>
+    // Gantt – year axis ticks & vertical grid lines
+    (function() {
+      var START = 2009, END = 2027, SPAN = END - START;
+      var axis = document.getElementById('ganttAxis');
+      var grid = document.getElementById('ganttGrid');
+      if (!axis || !grid) return;
+      for (var y = START; y <= END; y += 2) {
+        var pct = (y - START) / SPAN * 100 + '%';
+        var tick = document.createElement('span');
+        tick.textContent = y;
+        tick.className = 'gantt-yr';
+        tick.style.left = pct;
+        axis.appendChild(tick);
+        var line = document.createElement('div');
+        line.className = 'gantt-vline';
+        line.style.left = pct;
+        grid.appendChild(line);
+      }
+    })();
+
+    // Gantt – hover tooltips (fixed-position, via JS)
+    (function() {
+      var tip = document.getElementById('ganttTip');
+      if (!tip) return;
+      document.querySelectorAll('#ganttBody .g-bar, #ganttBody .g-ms, #ganttBody .g-pub-dot').forEach(function(el) {
+        el.addEventListener('mouseenter', function(e) {
+          var isLink = el.tagName === 'A' && el.href;
+          var linkHtml = isLink
+            ? '<a class="g-tip-link" href="' + el.href + '" target="_blank" rel="noopener">↗ Άνοιγμα</a>'
+            : '';
+          tip.innerHTML =
+            '<div class="g-tip-title">' + (el.dataset.title || '') + '</div>' +
+            (el.dataset.org   ? '<div class="g-tip-org">'   + el.dataset.org   + '</div>' : '') +
+            (el.dataset.dates ? '<div class="g-tip-dates">' + el.dataset.dates + '</div>' : '') +
+            (el.dataset.desc  ? '<div class="g-tip-desc">'  + el.dataset.desc  + '</div>' : '') +
+            linkHtml;
+          tip.classList.add('show');
+          moveTip(e);
+        });
+        el.addEventListener('mousemove', moveTip);
+        el.addEventListener('mouseleave', function() { tip.classList.remove('show'); });
+      });
+      function moveTip(e) {
+        var x = e.clientX + 18, y = e.clientY - 24;
+        if (x + 270 > window.innerWidth)  x = e.clientX - 274;
+        if (y + 170 > window.innerHeight) y = e.clientY - 170;
+        tip.style.left = x + 'px';
+        tip.style.top  = y + 'px';
+      }
+    })();
+
+    // Gantt – move overflowing bar labels outside their bar
+    (function() {
+      requestAnimationFrame(function() {
+        document.querySelectorAll('#ganttBody .g-bar').forEach(function(bar) {
+          var lbl = bar.querySelector('.g-bl');
+          if (!lbl) return;
+          // scrollWidth gives the intrinsic (unclamped) text width
+          if (lbl.scrollWidth + 18 > bar.offsetWidth) {
+            lbl.style.position = 'absolute';
+            lbl.style.left = 'calc(100% + 6px)';
+            lbl.style.top = '50%';
+            lbl.style.transform = 'translateY(-50%)';
+            lbl.style.zIndex = '4';
+            lbl.classList.add('g-bl--out');
+          }
+        });
+      });
+    })();
+
+    // Gantt – category filter buttons
+    document.querySelectorAll('.cm-f').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.cm-f').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var cat = btn.dataset.cat;
+        document.querySelectorAll('#ganttBody .gantt-row').forEach(function(row) {
+          var cats = row.dataset.cat ? row.dataset.cat.split(' ') : [];
+          if (cat === 'all' || cats.indexOf(cat) !== -1) {
+            row.classList.remove('cm-hidden');
+          } else {
+            row.classList.add('cm-hidden');
+          }
+        });
+        document.querySelectorAll('#ganttBody .gantt-cat').forEach(function(hdr) {
+          if (cat === 'all' || hdr.dataset.cat === cat) {
+            hdr.classList.remove('cm-hidden');
+          } else {
+            hdr.classList.add('cm-hidden');
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
