@@ -328,14 +328,11 @@
     /* ARTICLES */
     .outlets-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 1fr;
       gap: 20px;
     }
-    @media (max-width: 900px) {
-      .outlets-grid { grid-template-columns: repeat(2, 1fr); }
-    }
     @media (max-width: 500px) {
-      .outlets-grid { grid-template-columns: 1fr; }
+      .outlets-grid { gap: 16px; }
     }
     .outlet-card {
       background: var(--surface);
@@ -343,21 +340,34 @@
       box-shadow: var(--shadow);
       padding: 24px 28px;
       transition: transform .25s, box-shadow .25s;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
     }
     .outlet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
     .outlet-card h3 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.05rem;
       color: var(--navy);
-      margin-bottom: 12px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--accent-light);
+      min-width: 160px;
+      padding-right: 24px;
+      border-right: 1px solid var(--accent-light);
+      padding-top: 4px;
+      flex-shrink: 0;
     }
-    .outlet-card ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .outlet-card ol { padding-left: 18px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px 32px; flex: 1; font-size: 0.93rem; }
+    .outlet-card ol li { min-width: 220px; }
+    @media (max-width: 700px) {
+      .outlet-card { flex-direction: column; gap: 12px; }
+      .outlet-card h3 { min-width: unset; padding-right: 0; border-right: none; border-bottom: 1px solid var(--accent-light); padding-bottom: 10px; padding-top: 0; margin-bottom: 0; }
+      .outlet-card ol { flex-direction: column; flex-wrap: nowrap; gap: 8px; }
+      .outlet-card ol li { min-width: unset; }
+    }
     .outlet-card ol li a {
       color: var(--navy-mid);
       text-decoration: none;
-      font-size: 0.86rem;
+      font-size: 0.93rem;
       line-height: 1.55;
       transition: color .2s;
     }
@@ -843,7 +853,7 @@
 
       <h2 style="margin-top:8px;">Αρθρογραφία</h2>
       <p style="color:#4b5563;margin-bottom:28px;line-height:1.8;">
-        Κατά καιρούς έχω αρθρογραφήσει ως εξωτερικός συνεργάτης σε διάφορα μέσα ενημέρωσης, μεταξύ των οποίων η
+        Έχει αρθρογραφήσει ως εξωτερικός συνεργάτης σε μέσα ενημέρωσης όπως η
         <strong>Καθημερινή</strong>, το <strong>Έθνος</strong>, η <strong>HuffPost Greece</strong>,
         το <strong>iEfimerida</strong> και η <strong>Εφημερίδα των Συντακτών</strong>.
       </p>
@@ -963,19 +973,6 @@
         <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562939207/do-it-like-great-britain-antiprosopeytiki-dimokratia-a-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Α΄ Μέρος</a></li>
         <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562962547/do-it-like-great-britain-antiprosopeytiki-dimokratia-v-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Β΄ Μέρος</a></li>
       </ol>
-
-      <h2 style="margin-top:52px;">Ντοκιμαντέρ</h2>
-      <div class="book-card" style="border-left-color:#a78bfa;">
-        <p>
-          Οι <strong>«Χρυσοί Φρουροί»</strong> είναι ένα ανεξάρτητο ντοκιμαντέρ 43 λεπτών
-          που δημιουργήθηκε το 2011 ως πτυχιακή εργασία στο Τμήμα Κοινωνιολογίας του Παντείου Πανεπιστημίου
-          από τους φοιτητές <strong>Άρη Βουρβούλια</strong>, Σπύρο Ελευθερίου και Κωνσταντίνο Γαβριηλίδη.
-        </p>
-        <p>
-          Το φιλμ καταγράφει την άνοδο και τη δράση της Χρυσής Αυγής εκείνη την περίοδο, αναλύοντας
-          το φαινόμενο του νεοφασισμού στην Ελλάδα μέσα από συνεντεύξεις και πλάνα δρόμου.
-        </p>
-      </div>
     </section>
 
     <!-- INTERVIEWS -->
@@ -994,7 +991,7 @@
       <!-- «Εδώ» -->
       <div style="margin-bottom:40px;">
         <p class="section-label" style="margin-bottom:12px;">«Εδώ» – One Channel</p>
-        <div class="video-grid">
+        <div class="video-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="video-card">
             <div class="video-label">📺 14 Σκιές και Αλήθειες – Παρουσίαση βιβλίου (4.12.2025)</div>
             <div class="video-thumb">
