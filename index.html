@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { overflow-x: clip; }
 
     :root {
       --navy:         #0f1f3d;
@@ -108,11 +109,11 @@
     .hero-text {
       background: var(--navy);
       color: #fff;
-      padding: 72px 60px;
+      padding: 48px 52px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 24px;
+      gap: 14px;
     }
     .hero-tag {
       display: inline-block;
@@ -128,14 +129,14 @@
       border-radius: 100px;
     }
     .hero-text h1 {
-      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
       font-weight: 700;
       line-height: 1.1;
       font-family: 'Playfair Display', Georgia, serif;
       color: #fff;
     }
     .hero-subtitle {
-      font-size: 1.1rem;
+      font-size: 0.92rem;
       font-weight: 300;
       color: #aec6e8;
       font-style: italic;
@@ -143,8 +144,8 @@
     .hero-contact {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px 20px;
-      font-size: 0.95rem;
+      gap: 4px 16px;
+      font-size: 0.82rem;
       color: #ccd9ee;
     }
     @media (max-width: 640px) {
@@ -157,14 +158,14 @@
     .hero-contact a:hover { opacity: .75; }
     .hero-bio {
       border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 20px;
+      padding-top: 12px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 8px;
     }
     .hero-bio p {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.82rem;
+      line-height: 1.7;
       color: #ccd9ee;
     }
     .hero-bio em { color: var(--accent); font-style: italic; }
@@ -734,14 +735,21 @@
       .hero-text { padding: 52px 28px; }
     }
     @media (max-width: 640px) {
+      html { font-size: 15px; }
       .photo-mosaic { height: 80vw; }
       .hero-text { padding: 36px 20px; }
+      .hero-bio p { font-size: 0.9rem; }
+      .hero-subtitle { font-size: 0.95rem; }
       .tl-item { grid-template-columns: 1fr; }
       .tl-item::before, .tl-dot { display: none; }
       .tl-period { text-align: left; font-size: .75rem; }
       .tl-body { margin-left: 0; }
       .book-card { padding: 24px 18px; }
       .container { padding: 48px 16px; }
+      section h2 { font-size: 1.8rem; }
+      .section-label { font-size: 0.65rem; }
+      .outlet-card ol { font-size: 0.85rem; }
+      .outlet-card ol li a { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -792,6 +800,7 @@
     <div class="nav-inner">
       <a href="#bio">Προφίλ</a>
       <a href="#book">Βιβλίο</a>
+      <a href="#podcast-section">Podcast</a>
       <a href="#articles">Δημοσιογραφία</a>
       <a href="#interviews">Συνεντεύξεις</a>
       <a href="#cv">Βιογραφικό</a>
@@ -845,6 +854,55 @@
         </div>
       </div>
 
+    </section>
+
+    <!-- PODCAST -->
+    <section id="podcast-section">
+      <p class="section-label">Do it Like</p>
+      <h2>Podcast</h2>
+      <p class="podcast-intro">
+        Ένα podcast του Pod.gr για τα success stories διαφορετικών χωρών, το καθένα σε ένα ξεχωριστό πεδίο της πολιτικής και κοινωνικής ζωής. Κάθε επεισόδιο εξερευνά τους λόγους για τους οποίους τα συγκεκριμένα κράτη κατάφεραν να ξεχωρίσουν στη σύγχρονη ιστορία, καθώς και τη διαδρομή που ακολούθησαν μέχρι να φτάσουν σε αυτό το σημείο. Φωτίζοντας θετικές αλλά και σκοτεινές πτυχές, το <em><strong>Do it Like</strong></em> είναι μια πολύπλευρη έρευνα, γεμάτη στοιχεία, για τις εξαιρέσεις και τους εξαίρετους της ιστορίας.
+      </p>
+      <div class="podcast-episodes">
+        <div class="podcast-episode-card">
+          <div class="podcast-episode-label">🎙 Do it Like – Ολλανδία &nbsp;·&nbsp; Ατομικά Δικαιώματα &amp; Ελευθερίες</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/7tVegwdsUvDDtuTfFOf9d0?utm_source=generator"
+            width="100%" height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="podcast-episode-card">
+          <div class="podcast-episode-label">🎙 Do it Like – Ιαπωνία &nbsp;·&nbsp; Τεχνολογία</div>
+          <iframe
+            src="https://open.spotify.com/embed/episode/4Z25GGBYZbPXD8QUC5aPnP?utm_source=generator"
+            width="100%" height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+      <p style="color:#4b5563;margin-top:20px;margin-bottom:14px;font-size:.95rem;">
+        Βρείτε όλα τα επεισόδια, καθώς και το πλήρες προφίλ του podcast, στο <strong>Pod.gr</strong>:
+      </p>
+      <a class="kath-link" href="https://pod.gr/aris-vourvoulias/" target="_blank" rel="noopener">
+        → Άρης Βουρβούλιας στο Pod.gr
+      </a>
+      <p style="color:#4b5563;margin-top:32px;margin-bottom:14px;font-size:.95rem;">
+        Η σειρά σε συνεργασία με την <strong>«Καθημερινή»</strong>, πλαισιωνόταν από ένα αποκλειστικό άρθρο για κάθε επεισόδιο.
+      </p>
+      <ol style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562665625/do-it-like-singapore/" target="_blank" rel="noopener">🇸🇬 Do it Like Singapore</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562703923/podcast-do-it-like-estonia-psifiaki-diakyvernisi/" target="_blank" rel="noopener">🇪🇪 Do it Like Estonia: Ψηφιακή Διακυβέρνηση</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562742725/do-it-like-finland-paideia/" target="_blank" rel="noopener">🇫🇮 Do it Like Finland: Παιδεία</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562780213/do-it-like-new-zealand-epicheirimatiko-perivallon/" target="_blank" rel="noopener">🇳🇿 Do it Like New Zealand: Επιχειρηματικό Περιβάλλον</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562822012/do-it-like-japan-technologia/" target="_blank" rel="noopener">🇯🇵 Do it Like Japan: Τεχνολογία</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562858777/do-it-like-denmark-kratos-pronoias/" target="_blank" rel="noopener">🇩🇰 Do it Like Denmark: Κράτος Πρόνοιας</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562894786/do-it-like-the-netherlands-atomika-dikaiomata-amp-eleytheries/" target="_blank" rel="noopener">🇳🇱 Do it Like the Netherlands: Ατομικά Δικαιώματα &amp; Ελευθερίες</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562939207/do-it-like-great-britain-antiprosopeytiki-dimokratia-a-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Α΄ Μέρος</a></li>
+        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562962547/do-it-like-great-britain-antiprosopeytiki-dimokratia-v-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Β΄ Μέρος</a></li>
+      </ol>
     </section>
 
     <!-- ARTICLES -->
@@ -929,50 +987,6 @@
           </ol>
         </div>
       </div>
-      <h2 id="podcast" style="margin-top:52px;">Podcast</h2>
-      <p class="podcast-intro">
-        Ένα podcast του Pod.gr για τα success stories διαφορετικών χωρών, το καθένα σε ένα ξεχωριστό πεδίο της πολιτικής και κοινωνικής ζωής. Κάθε επεισόδιο εξερευνά τους λόγους για τους οποίους τα συγκεκριμένα κράτη κατάφεραν να ξεχωρίσουν στη σύγχρονη ιστορία, καθώς και τη διαδρομή που ακολούθησαν μέχρι να φτάσουν σε αυτό το σημείο. Φωτίζοντας θετικές αλλά και σκοτεινές πτυχές, το <em><strong>Do it Like</strong></em> είναι μια πολύπλευρη έρευνα, γεμάτη στοιχεία, για τις εξαιρέσεις και τους εξαίρετους της ιστορίας.
-      </p>
-      <div class="podcast-episodes">
-        <div class="podcast-episode-card">
-          <div class="podcast-episode-label">🎙 Do it Like – Ολλανδία &nbsp;·&nbsp; Ατομικά Δικαιώματα &amp; Ελευθερίες</div>
-          <iframe
-            src="https://open.spotify.com/embed/episode/7tVegwdsUvDDtuTfFOf9d0?utm_source=generator"
-            width="100%" height="152"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
-        </div>
-        <div class="podcast-episode-card">
-          <div class="podcast-episode-label">🎙 Do it Like – Ιαπωνία &nbsp;·&nbsp; Τεχνολογία</div>
-          <iframe
-            src="https://open.spotify.com/embed/episode/4Z25GGBYZbPXD8QUC5aPnP?utm_source=generator"
-            width="100%" height="152"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-      <p style="color:#4b5563;margin-top:20px;margin-bottom:14px;font-size:.95rem;">
-        Βρείτε όλα τα επεισόδια, καθώς και το πλήρες προφίλ του podcast, στο <strong>Pod.gr</strong>:
-      </p>
-      <a class="kath-link" href="https://pod.gr/aris-vourvoulias/" target="_blank" rel="noopener">
-        → Άρης Βουρβούλιας στο Pod.gr
-      </a>
-      <p style="color:#4b5563;margin-top:32px;margin-bottom:14px;font-size:.95rem;">
-        Η σειρά σε συνεργασία με την <strong>«Καθημερινή»</strong>, πλαισιωνόταν από ένα αποκλειστικό άρθρο για κάθε επεισόδιο.
-      </p>
-      <ol style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;">
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562665625/do-it-like-singapore/" target="_blank" rel="noopener">🇸🇬 Do it Like Singapore</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562703923/podcast-do-it-like-estonia-psifiaki-diakyvernisi/" target="_blank" rel="noopener">🇪🇪 Do it Like Estonia: Ψηφιακή Διακυβέρνηση</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562742725/do-it-like-finland-paideia/" target="_blank" rel="noopener">🇫🇮 Do it Like Finland: Παιδεία</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562780213/do-it-like-new-zealand-epicheirimatiko-perivallon/" target="_blank" rel="noopener">🇳🇿 Do it Like New Zealand: Επιχειρηματικό Περιβάλλον</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562822012/do-it-like-japan-technologia/" target="_blank" rel="noopener">🇯🇵 Do it Like Japan: Τεχνολογία</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562858777/do-it-like-denmark-kratos-pronoias/" target="_blank" rel="noopener">🇩🇰 Do it Like Denmark: Κράτος Πρόνοιας</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562894786/do-it-like-the-netherlands-atomika-dikaiomata-amp-eleytheries/" target="_blank" rel="noopener">🇳🇱 Do it Like the Netherlands: Ατομικά Δικαιώματα &amp; Ελευθερίες</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562939207/do-it-like-great-britain-antiprosopeytiki-dimokratia-a-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Α΄ Μέρος</a></li>
-        <li><a class="kath-link" href="https://www.kathimerini.gr/visual/podcasts/562962547/do-it-like-great-britain-antiprosopeytiki-dimokratia-v-meros/" target="_blank" rel="noopener">🇬🇧 Do it Like Great Britain: Αντιπροσωπευτική Δημοκρατία – Β΄ Μέρος</a></li>
-      </ol>
     </section>
 
     <!-- INTERVIEWS -->
