@@ -6,34 +6,37 @@
   <title>Άρης Βουρβούλιας – Συγγραφέας &amp; Πολιτικός Αναλυτής</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { overflow-x: clip; }
     html { overflow-x: clip; }
 
     :root {
-      --navy:         #0f1f3d;
-      --navy-mid:     #1a3461;
+      --navy:         #060d18;
+      --navy-mid:     #0f1c32;
       --accent:       #c8a96e;
-      --accent-light: #f0e4c8;
-      --bg:           #f6f5f1;
-      --surface:      #ffffff;
-      --text:         #1c1c2e;
-      --muted:        #6b7280;
-      --border:       #e5e7eb;
-      --radius:       12px;
-      --shadow:       0 4px 24px rgba(15,31,61,0.08);
-      --shadow-hover: 0 8px 40px rgba(15,31,61,0.16);
+      --accent-light: rgba(200,169,110,0.12);
+      --accent-warm:  #c8a96e;
+      --bg:           #080f1e;
+      --surface:      #0f1b2d;
+      --surface-alt:  #132035;
+      --text:         #dde3ef;
+      --muted:        #6a7fa0;
+      --border:       #1e2d45;
+      --radius:       4px;
+      --radius-lg:    10px;
+      --shadow:       0 2px 20px rgba(0,0,0,0.4);
+      --shadow-hover: 0 8px 40px rgba(0,0,0,0.6);
     }
 
     html { scroll-behavior: smooth; font-size: 18px; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Jost', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.8;
+      line-height: 1.75;
       font-size: 1rem;
     }
 
@@ -108,46 +111,51 @@
     .mosaic-arrow.prev { left: 14px; }
     .mosaic-arrow.next { right: 14px; }
     .hero-text {
-      background: var(--navy);
-      color: #fff;
+      background: var(--bg);
+      color: var(--text);
       padding: 48px 52px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
+      border-left: 1px solid var(--border);
     }
     .hero-tag {
       display: inline-block;
       align-self: flex-start;
-      background: rgba(200,169,110,0.15);
-      border: 1px solid rgba(200,169,110,0.5);
-      color: var(--accent);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
+      background: transparent;
+      border: 1px solid rgba(184,147,74,0.5);
+      color: var(--accent-warm);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      padding: 5px 16px;
-      border-radius: 100px;
+      font-family: 'Jost', sans-serif;
+      padding: 5px 14px;
+      border-radius: 2px;
     }
     .hero-text h1 {
-      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      font-family: 'Playfair Display', Georgia, serif;
-      color: #fff;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-weight: 600;
+      line-height: 1.08;
+      font-family: 'Jost', system-ui, sans-serif;
+      color: var(--text);
+      letter-spacing: 0.02em;
     }
     .hero-subtitle {
-      font-size: 0.92rem;
+      font-size: 0.85rem;
       font-weight: 300;
-      color: #aec6e8;
-      font-style: italic;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      font-family: 'Jost', sans-serif;
     }
     .hero-contact {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px 16px;
-      font-size: 0.82rem;
-      color: #ccd9ee;
+      gap: 4px 20px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-family: 'Jost', sans-serif;
     }
     @media (max-width: 640px) {
       .hero-contact {
@@ -158,37 +166,39 @@
     .hero-contact a { color: var(--accent); text-decoration: none; transition: opacity .2s; }
     .hero-contact a:hover { opacity: .75; }
     .hero-bio {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
     .hero-bio p {
       font-size: 0.82rem;
-      line-height: 1.7;
-      color: #ccd9ee;
+      line-height: 1.75;
+      color: var(--muted);
+      font-family: 'Jost', sans-serif;
     }
     .hero-bio em { color: var(--accent); font-style: italic; }
 
     /* NAV */
     nav {
-      background: var(--surface);
+      background: rgba(8,15,30,0.92);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
     .nav-inner {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
       white-space: nowrap;
       min-width: max-content;
-      padding: 0 8px;
+      padding: 0 12px;
     }
     @media (max-width: 640px) {
       .nav-inner {
@@ -213,10 +223,12 @@
     nav a {
       color: var(--muted);
       text-decoration: none;
-      padding: 12px 14px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
+      padding: 14px 16px;
+      font-size: 0.73rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
       transition: color .2s;
       position: relative;
     }
@@ -224,67 +236,75 @@
       content: '';
       position: absolute;
       bottom: 0; left: 50%; right: 50%;
-      height: 2px;
+      height: 1px;
       background: var(--accent);
       transition: left .25s, right .25s;
     }
-    nav a:hover { color: var(--navy); }
+    nav a:hover { color: var(--text); }
     nav a:hover::after { left: 16px; right: 16px; }
 
     /* LAYOUT */
-    .container { max-width: 980px; margin: 0 auto; padding: 80px 28px; }
-    .container section { margin-bottom: 96px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 96px 32px; }
+    .container section { margin-bottom: 112px; }
 
     .section-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      font-family: 'Jost', sans-serif;
     }
     section h2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.4rem;
-      color: var(--navy);
-      margin-bottom: 36px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--accent-light);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.1;
     }
 
     /* BIO */
     .bio-grid { display: flex; flex-direction: column; gap: 20px; }
-    .bio-grid p { font-size: 1.1rem; color: #374151; line-height: 1.9; }
+    .bio-grid p { font-size: 1.1rem; color: var(--muted); line-height: 1.9; }
 
     /* BOOK */
     .book-card {
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 36px 40px;
-      border-left: 4px solid var(--accent);
+      border: 1px solid var(--border);
+      box-shadow: none;
+      padding: 40px 44px;
+      border-left: 2px solid var(--accent);
     }
-    .book-card p { color: #374151; line-height: 1.8; margin-bottom: 20px; }
+    .book-card p { color: var(--muted); line-height: 1.85; margin-bottom: 22px; font-size: 0.97rem; }
     .book-links { list-style: none; margin-bottom: 28px; }
     .book-links li { margin-bottom: 8px; }
     .book-links li a {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--navy-mid);
+      color: var(--text);
       text-decoration: none;
-      font-weight: 500;
-      font-size: .95rem;
+      font-weight: 400;
+      font-size: .93rem;
+      letter-spacing: 0.01em;
       transition: color .2s;
     }
     .book-links li a::before { content: '→'; color: var(--accent); }
     .book-links li a:hover { color: var(--accent); }
 
     .video-section-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: .12em;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: .18em;
       text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
       color: var(--muted);
       margin-bottom: 14px;
     }
@@ -298,9 +318,10 @@
       .video-grid--2col { grid-template-columns: 1fr; }
     }
     .video-card {
-      border-radius: 10px;
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: none;
+      border: 1px solid var(--border);
       background: #000;
       transition: transform .25s, box-shadow .25s;
     }
@@ -363,24 +384,26 @@
       .outlets-grid { gap: 16px; }
     }
     .outlet-card {
-      background: var(--accent-light);
+      background: var(--surface);
       border-radius: var(--radius);
       box-shadow: none;
+      border: 1px solid var(--border);
       padding: 24px 28px;
-      transition: transform .25s, box-shadow .25s;
+      transition: transform .25s, border-color .25s;
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 32px;
     }
-    .outlet-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .outlet-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--accent-light); }
     .outlet-card h3 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.05rem;
-      color: var(--navy);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
       min-width: 160px;
       padding-right: 24px;
-      border-right: 1px solid var(--accent-light);
+      border-right: 1px solid var(--border);
       padding-top: 4px;
       flex-shrink: 0;
     }
@@ -393,7 +416,7 @@
       .outlet-card ol li { min-width: unset; }
     }
     .outlet-card ol li a {
-      color: var(--navy-mid);
+      color: var(--muted);
       text-decoration: none;
       font-size: 0.93rem;
       line-height: 1.55;
@@ -402,7 +425,7 @@
     .outlet-card ol li a:hover { color: var(--accent); }
 
     /* PODCAST */
-    .podcast-intro { color: #374151; margin-bottom: 24px; font-size: 1.08rem; line-height: 1.85; }
+    .podcast-intro { color: var(--muted); margin-bottom: 24px; font-size: 1.08rem; line-height: 1.85; }
     .podcast-episodes {
       display: flex;
       flex-direction: column;
@@ -412,7 +435,7 @@
     .podcast-episode-card {
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
       overflow: hidden;
     }
     .podcast-episode-label {
@@ -438,18 +461,19 @@
     .podcast-pill {
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px 22px;
+      border: 1px solid var(--border);
+      box-shadow: none;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       gap: 14px;
       text-decoration: none;
-      color: var(--navy);
-      font-weight: 500;
+      color: var(--text);
+      font-weight: 400;
       font-size: .92rem;
-      transition: transform .2s, box-shadow .2s, color .2s;
+      transition: transform .2s, border-color .2s, color .2s;
     }
-    .podcast-pill:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); color: var(--accent); }
+    .podcast-pill:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
     .podcast-icon {
       width: 40px; height: 40px;
       background: linear-gradient(135deg, var(--navy), var(--navy-mid));
@@ -462,16 +486,17 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--accent-light);
-      color: var(--navy);
-      font-size: .88rem;
-      font-weight: 500;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: .85rem;
+      font-weight: 400;
       padding: 10px 18px;
-      border-radius: 8px;
+      border-radius: 2px;
       text-decoration: none;
-      transition: background .2s, color .2s;
+      transition: border-color .2s, color .2s;
     }
-    .kath-link:hover { background: var(--accent); color: #fff; }
+    .kath-link:hover { border-color: var(--accent); color: var(--accent); }
 
     /* CONTACT */
     .social-links {
@@ -486,27 +511,31 @@
       gap: 10px;
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 16px 24px;
+      border: 1px solid var(--border);
+      box-shadow: none;
+      padding: 14px 22px;
       text-decoration: none;
-      color: var(--navy);
-      font-weight: 500;
-      font-size: 1.02rem;
-      transition: transform .2s, box-shadow .2s, color .2s;
+      color: var(--text);
+      font-weight: 400;
+      font-size: 1rem;
+      transition: transform .2s, border-color .2s, color .2s;
     }
-    .social-pill:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); color: var(--accent); }
+    .social-pill:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
     .social-pill svg { width: 20px; height: 20px; flex-shrink: 0; }
 
     /* CV TIMELINE */
     .cv-heading {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 2.4rem;
-      color: var(--navy);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-size: 1.5rem;
+      color: var(--text);
+      font-weight: 600;
       margin-bottom: 28px;
       margin-top: 48px;
       display: flex;
       align-items: center;
       gap: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
     .cv-heading::after { content: ''; flex: 1; height: 1px; background: var(--border); }
     .timeline { display: flex; flex-direction: column; }
@@ -521,8 +550,8 @@
       content: '';
       position: absolute;
       left: 183px; top: 8px; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--accent-light), transparent);
+      width: 1px;
+      background: linear-gradient(to bottom, var(--border), transparent);
     }
     .tl-item:last-child::before { display: none; }
     .tl-period {
@@ -536,23 +565,25 @@
     }
     .tl-dot {
       position: absolute;
-      left: 175px; top: 6px;
-      width: 16px; height: 16px;
-      background: var(--accent);
-      border: 3px solid var(--bg);
+      left: 175px; top: 8px;
+      width: 14px; height: 14px;
+      background: var(--bg);
+      border: 2px solid var(--accent);
       border-radius: 50%;
-      box-shadow: 0 0 0 2px var(--accent);
     }
     .tl-body {
       background: var(--surface);
       border-radius: var(--radius);
-      padding: 20px 24px;
-      box-shadow: var(--shadow);
+      padding: 22px 26px;
+      box-shadow: none;
+      border: 1px solid var(--border);
       margin-left: 16px;
+      transition: border-color .2s;
     }
-    .tl-body h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
-    .tl-body .org { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-bottom: 0; }
-    .tl-body ul { padding-left: 18px; font-size: 0.93rem; color: #4b5563; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px; }
+    .tl-body:hover { border-color: rgba(184,147,74,0.35); }
+    .tl-body h3 { font-size: 1.02rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .tl-body .org { font-size: 0.88rem; color: var(--muted); font-style: italic; margin-bottom: 0; }
+    .tl-body ul { padding-left: 18px; font-size: 0.9rem; color: var(--muted); display: flex; flex-direction: column; gap: 8px; margin-top: 16px; border-top: 1px solid var(--border); padding-top: 14px; }
 
     /* EDUCATION */
     .edu-grid {
@@ -563,12 +594,13 @@
     .edu-card {
       background: var(--surface);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      box-shadow: none;
+      border: 1px solid var(--border);
       padding: 22px 26px;
-      border-top: 3px solid var(--accent);
+      border-top: 2px solid var(--accent);
     }
     .edu-card .year { font-size: 0.8rem; font-weight: 700; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
-    .edu-card .degree { font-weight: 600; color: var(--navy); font-size: 1rem; margin-bottom: 4px; }
+    .edu-card .degree { font-weight: 600; color: var(--text); font-size: 1rem; margin-bottom: 4px; }
     .edu-card .school { font-size: 0.92rem; color: var(--muted); font-style: italic; }
 
     /* CHRONOLOGICAL MAP – GANTT */
@@ -588,18 +620,21 @@
     .cm-header { text-align: center; margin-bottom: 52px; }
     .cm-eyebrow {
       display: block;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      font-size: 0.62rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
       color: rgba(200,169,110,.6); margin-bottom: 10px;
     }
     .cm-h2 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; font-weight: 700; margin-bottom: 28px;
+      font-family: 'Jost', system-ui, sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: #fff; font-weight: 600; margin-bottom: 28px;
+      letter-spacing: 0.04em; text-transform: uppercase;
     }
     .cm-filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
     .cm-f {
       background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
-      color: #8aaccf; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
-      padding: 7px 20px; border-radius: 100px; cursor: pointer;
+      color: #8aaccf; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 2px; cursor: pointer;
       transition: background .2s, border-color .2s, color .2s, transform .15s;
     }
     .cm-f:hover { background: rgba(200,169,110,.12); border-color: rgba(200,169,110,.35); color: #c8a96e; transform: translateY(-1px); }
@@ -744,13 +779,14 @@
       box-shadow: 0 0 14px rgba(167,139,250,.7);
     }
 
-    /* FOOTER */
     footer {
       background: var(--navy);
-      color: #7a96c0;
+      color: rgba(255,255,255,0.38);
       text-align: center;
-      padding: 36px 24px;
-      font-size: 0.94rem;
+      padding: 40px 24px;
+      font-size: 0.82rem;
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.04em;
     }
     footer a { color: var(--accent); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
@@ -937,7 +973,7 @@
       <p style="color:#4b5563;margin-bottom:28px;line-height:1.8;">
         Έχει αρθρογραφήσει ως εξωτερικός συνεργάτης σε μέσα ενημέρωσης όπως η
         <strong>Καθημερινή</strong>, το <strong>Έθνος</strong>, η <strong>HuffPost Greece</strong>,
-        το <strong>iEfimerida</strong> και η <strong>Εφημερίδα των Συντακτών</strong>.
+        το <strong>iefimerida</strong> και η <strong>Εφημερίδα των Συντακτών</strong>.
       </p>
       <div class="outlets-grid">
         <div class="outlet-card">
@@ -956,7 +992,7 @@
           </ol>
         </div>
         <div class="outlet-card">
-          <h3>iEfimerida</h3>
+          <h3>iefimerida</h3>
           <ol>
             <li>
               <a href="https://www.iefimerida.gr/kosmos/benezoyela-ellada-i-biaii-enilikiosi-neas-epohis" target="_blank" rel="noopener">
@@ -1145,7 +1181,7 @@
             <h3>Αρθρογράφος</h3>
             <p class="org">Εξωτερικός Συνεργάτης</p>
             <ul>
-              <li>Δημοσιεύσεις στην Καθημερινή, το iEfimerida.gr, το Έθνος, το HuffPost Greece, την Εφημερίδα των Συντακτών (ΕφΣυν), το Lifo.gr κ.ά.</li>
+              <li>Δημοσιεύσεις στην Καθημερινή, το iefimerida.gr, το Έθνος, το HuffPost Greece, την Εφημερίδα των Συντακτών (ΕφΣυν), το Lifo.gr κ.ά.</li>
               <li>Θεματικές αρθρογραφίας: πολιτική, γεωπολιτική και ιστορία.</li>
             </ul>
           </div>
